@@ -1,3 +1,23 @@
-Mechanical Engineering Major | Physics Minor
+# Raphael Lemus Solis
 
-Welcome to my portfolio
+**Mechanical Engineering Major | Physics Minor**
+---
+
+## About Me
+- coming soon
+---
+
+## Projects
+
+- coming soon
+
+## Skills
+- coming soon
+
+## Contact
+
+
+Email: raphaellemussolis07@gmai.com
+Phone Number: 617-939-7513
+LinkedIn: 
+GitHub: https:github.com/Raphael-Lemus

@@ -9,7 +9,7 @@
 
 ## Projects
 
-- coming soon
+- [coming soon](something.md)
 
 ## Skills
 - coming soon

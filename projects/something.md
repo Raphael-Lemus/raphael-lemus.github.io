@@ -12,7 +12,7 @@ I got an idea
 
 ---
 ## Results
-![Trajectory](.../assets/images/IMG_20251217_233111 (1).png)
+![Trajectory](.../assets/images/IMG_20251217_233111(1).png)
 
 
 ---

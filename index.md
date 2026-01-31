@@ -1,6 +1,5 @@
 
 ### [About Me](/)
----
 
 ### [Projects](/projects/)
 

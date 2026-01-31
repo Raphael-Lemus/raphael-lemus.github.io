@@ -1,7 +1,3 @@
-# Raphael Lemus Solis
-
-**Mechanical Engineering Major | Physics Minor**
----
 
 ## About Me
 - coming soon

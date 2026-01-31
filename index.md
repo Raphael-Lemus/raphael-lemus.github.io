@@ -9,7 +9,7 @@
 
 ## Projects
 
-- [test](projects/)
+- test
 
 ## Skills
 - coming soon

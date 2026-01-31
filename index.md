@@ -1,12 +1,12 @@
 [About Me](/) | [Projects](/projects/) | [Skills](/skills/) | [Contact](/contact/)
-### [About Me](/)
+## About Me
 
 ### [Projects](/projects/)
 
 
-### [Skills](/skills/)
+### Skills
 
-### [Contact](/contact/)
+### Contact
 Email: raphaellemussolis07@gmai.com **  **
 Phone Number: 617-939-7513 **  **
 LinkedIn: 

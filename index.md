@@ -1,4 +1,4 @@
-[About Me](/) | [Projects](/projects/) | [Skills](/skills/) | [Contact](/contact/)
+[Homepage](/) | [Projects](/projects/)
 ### About Me
 
 ### [Projects](/projects/)

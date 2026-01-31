@@ -1,8 +1,6 @@
 theme: jekyll-theme-cayman
 title: Raphael Lemus Solis
 description: Mechanical Engineer Major | Physics Minor
+theme-color: "#0f172a"
 
-header_background: "#0f172a"
-header_heading_color: "#ffffff"
-header_text_color: "#e5e73b"
 

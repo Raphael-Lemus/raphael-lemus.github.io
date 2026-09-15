@@ -442,6 +442,35 @@
     color: var(--text-muted);
     margin-top: 10px;
   }
+  .photo-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 0 0 20px;
+  }
+  @media (max-width: 640px){
+    .photo-grid{ grid-template-columns: 1fr; }
+  }
+  .photo-grid figure{
+    margin: 0;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    padding: 8px 8px 10px;
+  }
+  .photo-grid img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1px;
+  }
+  .photo-grid figcaption{
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    text-align: center;
+  }
 
   /* Course / lab accordions */
   details.course-dropdown{
@@ -760,7 +789,7 @@
             </summary>
             <div class="lab-body">
               <div class="experiment">
-                <p class="experiment-label">WITH AMANDA MOORE-RINEHART</p>
+                <p class="experiment-label">WITH AMANDA</p>
                 <p>Using a U-tube manometer, Amanda and I measured the density of eight household liquids with nothing but hydrostatic pressure and a camera. We filled the manometer with water, ran a test liquid down one arm, then photographed the settled fluid and used MATLAB to convert the pixel height difference into a real measurement, solving for density from the pressure balance across the tube.</p>
 
                 <p>Before testing liquids, we checked the physics against a known case: blocking one arm at hydrostatic equilibrium produced a 1.5&nbsp;mm shift and a 14.7&nbsp;Pa pressure difference; tilting the tube and blocking it again pushed that to 18.9&nbsp;cm and 1853&nbsp;Pa — confirming the linear relationship between column height and pressure.</p>
@@ -806,6 +835,81 @@
                   <span class="tag">COMSOL</span>
                   <span class="tag">Hydrostatic pressure</span>
                   <span class="tag">Error analysis</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Lab 2 — Force on Adhesive Tape (Scotch vs. Duct)</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This lab reused the manometer tube from Lab 1, but instead of leaving it open, I sealed one end with a strip of tape and measured how tall a column of water the tape's adhesive could hold before letting go — then converted that height into a hydrostatic force. Height was read the same way as before: a ruler in frame gave a pixel-to-cm calibration, and MATLAB converted a click-to-click pixel distance into a real measurement.</p>
+
+                <figure class="chart">
+                  <img src="assets/lab2-setup.jpg" alt="Photo of the manometer tube taped to a cabinet with a measuring tape running alongside it for pixel-to-cm calibration.">
+                  <figcaption>Experimental setup — tube sealed with tape, ruler alongside for calibration.</figcaption>
+                </figure>
+
+                <p>I ran three trials with scotch tape and one with duct tape, to see whether the type of tape — and how sticky it was — changed the result.</p>
+
+                <div class="photo-grid">
+                  <figure>
+                    <img src="assets/lab2-test1.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 1, showing a distance of 231.1 pixels.">
+                    <figcaption>Scotch tape — Test 1</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="assets/lab2-test2.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 2, showing a distance of 378.0 pixels.">
+                    <figcaption>Scotch tape — Test 2</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="assets/lab2-test3.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 3, showing a distance of 397.0 pixels.">
+                    <figcaption>Scotch tape — Test 3</figcaption>
+                  </figure>
+                </div>
+
+                <div class="eq-block">p = ρgh &nbsp;→&nbsp; F = pA &nbsp;(tube I.D. 6.11 mm, A = 2.92×10⁻⁵ m²)</div>
+
+                <figure class="chart">
+                  <img src="assets/lab2-duct-tape.png" alt="MATLAB pixel-measurement screenshot for the duct tape trial, showing a distance of 509.6 pixels.">
+                  <figcaption>Duct tape trial.</figcaption>
+                </figure>
+
+                <table class="data-table">
+                  <caption>Column height and resulting force, by trial</caption>
+                  <thead>
+                    <tr>
+                      <th>Trial</th>
+                      <th class="num">Height (cm)</th>
+                      <th class="num">Force (N)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Scotch tape — Test 1</td><td class="num">6.10</td><td class="num">—</td></tr>
+                    <tr><td>Scotch tape — Test 2</td><td class="num">4.76</td><td class="num">—</td></tr>
+                    <tr><td>Scotch tape — Test 3</td><td class="num">8.38</td><td class="num">—</td></tr>
+                    <tr><td>Scotch tape — average</td><td class="num">6.41</td><td class="num">0.018</td></tr>
+                    <tr><td>Duct tape</td><td class="num">5.02</td><td class="num">0.014</td></tr>
+                  </tbody>
+                </table>
+
+                <p>For the COMSOL side of this one, a classmate, Ryan, helped me work through setting up the parameter sweep. The resulting force-vs-water-height curve came out linear, and the calculated 0.018&nbsp;N for scotch tape lines up closely with the swept range — though COMSOL treats the sealed end as a rigid body, so it doesn't account for the tape's adhesion itself.</p>
+
+                <figure class="chart">
+                  <img src="assets/lab2-comsol-force-height.png" alt="COMSOL line graph of force in newtons versus water height in meters, showing a linear increase from about 0.286 N to 0.305 N.">
+                  <figcaption>COMSOL parameter sweep — force vs. water height.</figcaption>
+                </figure>
+
+                <p>Results were noisier than Lab 1's — pixel-to-cm conversion was harder to pin down, camera angle could tilt between shots, and a couple of untested trials likely leaked water through small gaps in the tape. Even so, the pattern held: the three scotch-tape trials averaged a 6.41&nbsp;cm column (0.018&nbsp;N), duct tape held only 5.02&nbsp;cm (0.014&nbsp;N) — about a 22% difference. The takeaway was that adhesive type didn't change the underlying hydrostatic pressure, just how much of it each tape could actually hold back.</p>
+
+                <div class="tag-row">
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Hydrostatic pressure</span>
+                  <span class="tag">Pixel calibration</span>
                 </div>
               </div>
             </div>

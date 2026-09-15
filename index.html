@@ -443,6 +443,67 @@
     margin-top: 10px;
   }
 
+  /* Course / lab accordions */
+  details.course-dropdown{
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--bg-elevated);
+  }
+  summary.course-summary{
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px 24px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 19px;
+  }
+  summary.course-summary::-webkit-details-marker{ display: none; }
+  summary.course-summary .chevron{
+    font-family: var(--font-mono);
+    color: var(--blue);
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  details[open] > summary.course-summary .chevron{ transform: rotate(90deg); }
+  .course-body{
+    padding: 4px 24px 24px;
+    border-top: 1px solid var(--line);
+  }
+  details.lab-dropdown{
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  details.lab-dropdown:first-child{ margin-top: 20px; }
+  summary.lab-summary{
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+  }
+  summary.lab-summary::-webkit-details-marker{ display: none; }
+  summary.lab-summary .chevron{
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  details[open] > summary.lab-summary .chevron{ transform: rotate(90deg); }
+  .lab-body{
+    padding: 6px 18px 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+
   /* Experience / research */
   .job{
     padding: 24px 0;
@@ -685,56 +746,75 @@
       <div class="section-head"><span class="index">03</span><h2>Experiments</h2></div>
       <p class="lede">Lab work from thermal-fluid systems coursework.</p>
 
-      <div class="experiment">
-        <p class="experiment-label">THERMAL FLUID SYSTEMS — LAB 1, WITH AMANDA</p>
-        <h3 class="experiment-title">Manometer Density Measurement</h3>
-        <p>Using a U-tube manometer, Amanda and I measured the density of eight household liquids with nothing but hydrostatic pressure and a camera. We filled the manometer with water, ran a test liquid down one arm, then photographed the settled fluid and used MATLAB to convert the pixel height difference into a real measurement, solving for density from the pressure balance across the tube.</p>
+      <details class="course-dropdown" open>
+        <summary class="course-summary">
+          <span>ME51 — Thermal Fluid Systems</span>
+          <span class="chevron">▶</span>
+        </summary>
+        <div class="course-body">
 
-        <p>Before testing liquids, we checked the physics against a known case: blocking one arm at hydrostatic equilibrium produced a 1.5&nbsp;mm shift and a 14.7&nbsp;Pa pressure difference; tilting the tube and blocking it again pushed that to 18.9&nbsp;cm and 1853&nbsp;Pa — confirming the linear relationship between column height and pressure.</p>
+          <details class="lab-dropdown" open>
+            <summary class="lab-summary">
+              <span>Lab 1 — Manometer Density Measurement</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p class="experiment-label">WITH AMANDA</p>
+                <p>Using a U-tube manometer, Amanda and I measured the density of eight household liquids with nothing but hydrostatic pressure and a camera. We filled the manometer with water, ran a test liquid down one arm, then photographed the settled fluid and used MATLAB to convert the pixel height difference into a real measurement, solving for density from the pressure balance across the tube.</p>
 
-        <div class="eq-block">Δp = ρgΔh &nbsp;→&nbsp; ρ_liquid = ρ_water · (Δh_water / Δh_liquid)</div>
+                <p>Before testing liquids, we checked the physics against a known case: blocking one arm at hydrostatic equilibrium produced a 1.5&nbsp;mm shift and a 14.7&nbsp;Pa pressure difference; tilting the tube and blocking it again pushed that to 18.9&nbsp;cm and 1853&nbsp;Pa — confirming the linear relationship between column height and pressure.</p>
 
-        <table class="data-table">
-          <caption>Measured vs. published density, by liquid</caption>
-          <thead>
-            <tr>
-              <th>Liquid</th>
-              <th class="num">Measured (g/cm³)</th>
-              <th class="num">Actual (g/cm³)</th>
-              <th class="num">Error</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Lemon oil</td><td class="num">0.840</td><td class="num">0.840</td><td class="num">0%</td></tr>
-            <tr><td>Corn oil</td><td class="num">0.925</td><td class="num">0.922</td><td class="num">0.33%</td></tr>
-            <tr><td>Olive oil</td><td class="num">0.948</td><td class="num">0.920</td><td class="num">3.04%</td></tr>
-            <tr><td>Gatorade</td><td class="num">1.02</td><td class="num">1.03</td><td class="num">-0.97%</td></tr>
-            <tr><td>Milk</td><td class="num">0.989</td><td class="num">1.02</td><td class="num error-note">-3.04%</td></tr>
-            <tr><td>Hot sauce</td><td class="num">1.01</td><td class="num">1.04</td><td class="num error-note">-2.88%</td></tr>
-            <tr><td>Soy sauce</td><td class="num">1.06</td><td class="num">1.08</td><td class="num error-note">-1.85%</td></tr>
-            <tr><td>Orange juice</td><td class="num">0.99</td><td class="num">1.05</td><td class="num error-note">-5.71%</td></tr>
-          </tbody>
-        </table>
+                <div class="eq-block">Δp = ρgΔh &nbsp;→&nbsp; ρ_liquid = ρ_water · (Δh_water / Δh_liquid)</div>
 
-        <p>Most results landed within a few percent of published densities. The largest misses — orange juice, milk, and hot sauce — came from liquids that wouldn't settle cleanly against the meniscus, whether from opacity, suspended particles, or surface tension. We also cross-checked the setup in COMSOL, modeling the force each liquid would exert on a 1&nbsp;m tank wall with F&nbsp;=&nbsp;ρgh/2, and landed within 3% of the analytical result.</p>
+                <table class="data-table">
+                  <caption>Measured vs. published density, by liquid</caption>
+                  <thead>
+                    <tr>
+                      <th>Liquid</th>
+                      <th class="num">Measured (g/cm³)</th>
+                      <th class="num">Actual (g/cm³)</th>
+                      <th class="num">Error</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Lemon oil</td><td class="num">0.840</td><td class="num">0.840</td><td class="num">0%</td></tr>
+                    <tr><td>Corn oil</td><td class="num">0.925</td><td class="num">0.922</td><td class="num">0.33%</td></tr>
+                    <tr><td>Olive oil</td><td class="num">0.948</td><td class="num">0.920</td><td class="num">3.04%</td></tr>
+                    <tr><td>Gatorade</td><td class="num">1.02</td><td class="num">1.03</td><td class="num">-0.97%</td></tr>
+                    <tr><td>Milk</td><td class="num">0.989</td><td class="num">1.02</td><td class="num error-note">-3.04%</td></tr>
+                    <tr><td>Hot sauce</td><td class="num">1.01</td><td class="num">1.04</td><td class="num error-note">-2.88%</td></tr>
+                    <tr><td>Soy sauce</td><td class="num">1.06</td><td class="num">1.08</td><td class="num error-note">-1.85%</td></tr>
+                    <tr><td>Orange juice</td><td class="num">0.99</td><td class="num">1.05</td><td class="num error-note">-5.71%</td></tr>
+                  </tbody>
+                </table>
 
-        <figure class="chart">
-          <img src="assets/force-vs-liquid.png" alt="Bar chart of force in newtons on the tank wall for five liquids: olive oil, corn oil, lemon oil, Gatorade, and soy sauce.">
-          <figcaption>COMSOL-derived force on a 1 m tank wall, by liquid.</figcaption>
-        </figure>
+                <p>Most results landed within a few percent of published densities. The largest misses — orange juice, milk, and hot sauce — came from liquids that wouldn't settle cleanly against the meniscus, whether from opacity, suspended particles, or surface tension. We also cross-checked the setup in COMSOL, modeling the force each liquid would exert on a 1&nbsp;m tank wall with F&nbsp;=&nbsp;ρgh/2, and landed within 3% of the analytical result.</p>
 
-        <figure class="chart">
-          <img src="assets/pressure-vs-arclength.png" alt="Line graph of pressure in pascals versus arc length in meters for five liquids, showing soy sauce and Gatorade with the highest pressure gradient and lemon oil the lowest.">
-          <figcaption>Pressure vs. arc length along the tank wall, by liquid.</figcaption>
-        </figure>
+                <figure class="chart">
+                  <img src="assets/force-vs-liquid.png" alt="Bar chart of force in newtons on the tank wall for five liquids: olive oil, corn oil, lemon oil, Gatorade, and soy sauce.">
+                  <figcaption>COMSOL-derived force on a 1 m tank wall, by liquid.</figcaption>
+                </figure>
 
-        <div class="tag-row">
-          <span class="tag">MATLAB</span>
-          <span class="tag">COMSOL</span>
-          <span class="tag">Hydrostatic pressure</span>
-          <span class="tag">Error analysis</span>
+                <figure class="chart">
+                  <img src="assets/pressure-vs-arclength.png" alt="Line graph of pressure in pascals versus arc length in meters for five liquids, showing soy sauce and Gatorade with the highest pressure gradient and lemon oil the lowest.">
+                  <figcaption>Pressure vs. arc length along the tank wall, by liquid.</figcaption>
+                </figure>
+
+                <div class="tag-row">
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Hydrostatic pressure</span>
+                  <span class="tag">Error analysis</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Add future labs here as additional <details class="lab-dropdown"> blocks -->
+
         </div>
-      </div>
+      </details>
     </div>
   </section>
 

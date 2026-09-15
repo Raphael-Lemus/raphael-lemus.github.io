@@ -353,6 +353,96 @@
     border-radius: 2px;
   }
 
+  /* Experiments */
+  .experiment{
+    padding: 8px 0 12px;
+  }
+  .experiment-label{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--blue);
+    margin: 0 0 6px;
+  }
+  .experiment-title{
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 22px;
+    margin: 0 0 16px;
+  }
+  .experiment p{
+    max-width: 68ch;
+    font-size: 15.5px;
+    margin: 0 0 16px;
+  }
+  .eq-block{
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+    background: var(--bg-elevated);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 12px 16px;
+    margin: 0 0 16px;
+    display: inline-block;
+  }
+  table.data-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 20px;
+    font-size: 14px;
+  }
+  table.data-table caption{
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  table.data-table th{
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 14px 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  table.data-table td{
+    padding: 9px 14px 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  table.data-table td.num, table.data-table th.num{
+    font-family: var(--font-mono);
+    text-align: right;
+    padding-right: 0;
+  }
+  table.data-table tr:last-child td{ border-bottom: none; }
+  .error-note{
+    color: var(--accent);
+  }
+  figure.chart{
+    margin: 0 0 24px;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    padding: 14px 14px 12px;
+  }
+  figure.chart img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1px;
+  }
+  figure.chart figcaption{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 10px;
+  }
+
   /* Experience / research */
   .job{
     padding: 24px 0;
@@ -492,6 +582,7 @@
     <nav class="links" id="navLinks">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#experiments">Experiments</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
@@ -507,10 +598,10 @@
     <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <div>
-        <p class="kicker">EVERETT, MA</p>
+        <p class="kicker">MEDFORD, MA</p>
         <h1 class="name">Raphael<br>Lemus Solis</h1>
         <div class="underline"></div>
-        <p class="role"> <strong>Mechanical Engineering</strong> major, <strong>Physics</strong> minor at Tufts University.</p>
+        <p class="role">Mechanical Engineering major, <strong>Physics</strong> minor at Tufts University.</p>
         <p class="tagline">I design, model, and build physical systems — from a motorized lift-robot to a sand-cast sundial — and like projects that move between CAD, the shop, and testing in the same week.</p>
       </div>
       <div class="nameplate">
@@ -589,15 +680,73 @@
     </div>
   </section>
 
+  <section id="experiments">
+    <div class="wrap">
+      <div class="section-head"><span class="index">03</span><h2>Experiments</h2></div>
+      <p class="lede">Lab work from thermal-fluid systems coursework.</p>
+
+      <div class="experiment">
+        <p class="experiment-label">THERMAL FLUID SYSTEMS — LAB 1, WITH AMANDA</p>
+        <h3 class="experiment-title">Manometer Density Measurement</h3>
+        <p>Using a U-tube manometer, Amanda and I measured the density of eight household liquids with nothing but hydrostatic pressure and a camera. We filled the manometer with water, ran a test liquid down one arm, then photographed the settled fluid and used MATLAB to convert the pixel height difference into a real measurement, solving for density from the pressure balance across the tube.</p>
+
+        <p>Before testing liquids, we checked the physics against a known case: blocking one arm at hydrostatic equilibrium produced a 1.5&nbsp;mm shift and a 14.7&nbsp;Pa pressure difference; tilting the tube and blocking it again pushed that to 18.9&nbsp;cm and 1853&nbsp;Pa — confirming the linear relationship between column height and pressure.</p>
+
+        <div class="eq-block">Δp = ρgΔh &nbsp;→&nbsp; ρ_liquid = ρ_water · (Δh_water / Δh_liquid)</div>
+
+        <table class="data-table">
+          <caption>Measured vs. published density, by liquid</caption>
+          <thead>
+            <tr>
+              <th>Liquid</th>
+              <th class="num">Measured (g/cm³)</th>
+              <th class="num">Actual (g/cm³)</th>
+              <th class="num">Error</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Lemon oil</td><td class="num">0.840</td><td class="num">0.840</td><td class="num">0%</td></tr>
+            <tr><td>Corn oil</td><td class="num">0.925</td><td class="num">0.922</td><td class="num">0.33%</td></tr>
+            <tr><td>Olive oil</td><td class="num">0.948</td><td class="num">0.920</td><td class="num">3.04%</td></tr>
+            <tr><td>Gatorade</td><td class="num">1.02</td><td class="num">1.03</td><td class="num">-0.97%</td></tr>
+            <tr><td>Milk</td><td class="num">0.989</td><td class="num">1.02</td><td class="num error-note">-3.04%</td></tr>
+            <tr><td>Hot sauce</td><td class="num">1.01</td><td class="num">1.04</td><td class="num error-note">-2.88%</td></tr>
+            <tr><td>Soy sauce</td><td class="num">1.06</td><td class="num">1.08</td><td class="num error-note">-1.85%</td></tr>
+            <tr><td>Orange juice</td><td class="num">0.99</td><td class="num">1.05</td><td class="num error-note">-5.71%</td></tr>
+          </tbody>
+        </table>
+
+        <p>Most results landed within a few percent of published densities. The largest misses — orange juice, milk, and hot sauce — came from liquids that wouldn't settle cleanly against the meniscus, whether from opacity, suspended particles, or surface tension. We also cross-checked the setup in COMSOL, modeling the force each liquid would exert on a 1&nbsp;m tank wall with F&nbsp;=&nbsp;ρgh/2, and landed within 3% of the analytical result.</p>
+
+        <figure class="chart">
+          <img src="assets/force-vs-liquid.png" alt="Bar chart of force in newtons on the tank wall for five liquids: olive oil, corn oil, lemon oil, Gatorade, and soy sauce.">
+          <figcaption>COMSOL-derived force on a 1 m tank wall, by liquid.</figcaption>
+        </figure>
+
+        <figure class="chart">
+          <img src="assets/pressure-vs-arclength.png" alt="Line graph of pressure in pascals versus arc length in meters for five liquids, showing soy sauce and Gatorade with the highest pressure gradient and lemon oil the lowest.">
+          <figcaption>Pressure vs. arc length along the tank wall, by liquid.</figcaption>
+        </figure>
+
+        <div class="tag-row">
+          <span class="tag">MATLAB</span>
+          <span class="tag">COMSOL</span>
+          <span class="tag">Hydrostatic pressure</span>
+          <span class="tag">Error analysis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="experience">
     <div class="wrap">
-      <div class="section-head"><span class="index">03</span><h2>Experience &amp; Research</h2></div>
+      <div class="section-head"><span class="index">04</span><h2>Experience &amp; Research</h2></div>
 
       <div class="job">
         <div class="job-head">
           <div>
             <p class="job-title">BEST Scholar Peer Mentor</p>
-            <p class="job-org">Tufts University, EVERETT, MA</p>
+            <p class="job-org">Tufts University, Medford, MA</p>
           </div>
           <span class="job-date">SUMMER 2025</span>
         </div>
@@ -642,7 +791,7 @@
 
   <section id="skills">
     <div class="wrap">
-      <div class="section-head"><span class="index">04</span><h2>Skills</h2></div>
+      <div class="section-head"><span class="index">05</span><h2>Skills</h2></div>
       <div class="skills-grid">
         <div class="skill-group">
           <h3>Programming</h3>
@@ -682,14 +831,14 @@
 
   <section id="education">
     <div class="wrap">
-      <div class="section-head"><span class="index">05</span><h2>Education</h2></div>
+      <div class="section-head"><span class="index">06</span><h2>Education</h2></div>
 
       <div class="edu-block">
         <div class="edu-head">
           <h3 class="edu-school">Tufts University</h3>
           <span class="edu-date">EXPECTED MAY 2027</span>
         </div>
-        <p class="edu-program">B.S. Mechanical Engineering, Physics Minor — GPA 3.54, MEDFORD, MA</p>
+        <p class="edu-program">B.S. Mechanical Engineering, Physics Minor — GPA 3.54, Medford, MA</p>
         <div class="coursework">
           <span>Thermal Fluid Systems II</span>
           <span>Materials &amp; Manufacturing II</span>
@@ -729,7 +878,7 @@
         <a href="https://linkedin.com/in/rls27" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/Raphael-Lemus" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <p class="foot-note">Raphael Lemus Solis — EVERETT, MA</p>
+      <p class="foot-note">Raphael Lemus Solis — Medford, MA</p>
     </div>
   </footer>
 
@@ -750,4 +899,3 @@
 
 </body>
 </html>
-

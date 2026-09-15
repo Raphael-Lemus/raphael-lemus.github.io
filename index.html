@@ -710,7 +710,7 @@
     <div class="wrap">
       <div class="section-head"><span class="index">01</span><h2>About</h2></div>
       <div class="about-cols">
-        <p>I'm a junior at Tufts University studying mechanical engineering with a physics minor. My coursework runs through thermal-fluid systems, materials and manufacturing, mechanics, and controls, and outside of class I've built everything from a load-lifting robot to a hand-fabricated sundial. In summer 2024 I spent a month at the University of Tübingen studying sustainability and AI policy while picking up German.</p>
+        <p>I'm a senior at Tufts University studying mechanical engineering with a physics minor. My coursework runs through thermal-fluid systems, materials and manufacturing, mechanics, and controls, and outside of class I've built everything from a load-lifting robot to a hand-fabricated sundial. In summer 2024 I spent a month at the University of Tübingen studying sustainability and AI policy while picking up German.</p>
         <ul class="interest-list">
           <li>Languages &amp; culture</li>
           <li>Video games</li>
@@ -842,7 +842,7 @@
 
           <details class="lab-dropdown">
             <summary class="lab-summary">
-              <span>Lab 2 — Force on Adhesive Tape (Scotch vs. Duct)</span>
+              <span>MTN1 — Force on Adhesive Tape (Scotch vs. Duct)</span>
               <span class="chevron">▶</span>
             </summary>
             <div class="lab-body">
@@ -910,6 +910,273 @@
                   <span class="tag">COMSOL</span>
                   <span class="tag">Hydrostatic pressure</span>
                   <span class="tag">Pixel calibration</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Lab 2 — Bernoulli Jet Trajectories</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This lab tested how far water shoots out of holes at different heights on a bottle, using Bernoulli's equation to predict exit velocity and basic ballistics to predict landing distance. Three assumptions made Bernoulli tractable here: the flow is incompressible, steady, and inviscid.</p>
+
+                <div class="eq-block">P₁ + ½ρv₀² + ρgh₀ = P₂ + ½ρv₁² + ρgh₁</div>
+
+                <p>Both hole and bottle-top are open to atmosphere, so P₁ = P₂ and that term cancels. The bottle's cross-section is so much larger than the holes that, by continuity (A₁v₁ = A₂v₂), the velocity at the top is effectively zero. That leaves a clean relationship between exit velocity and the height of water above the hole:</p>
+
+                <div class="eq-block">v₁ = √(2g(h₀ − h₁))</div>
+
+                <table class="data-table">
+                  <caption>Predicted exit velocity by hole height (h₀ = 0.216 m, g = 9.81 m/s²)</caption>
+                  <thead><tr><th>Height of hole</th><th class="num">Exit velocity</th></tr></thead>
+                  <tbody>
+                    <tr><td>0.153 m</td><td class="num">1.111 m/s</td></tr>
+                    <tr><td>0.099 m</td><td class="num">1.514 m/s</td></tr>
+                    <tr><td>0.050 m</td><td class="num">1.804 m/s</td></tr>
+                  </tbody>
+                </table>
+
+                <p>To predict how far each stream would land, I assumed the jet leaves perfectly horizontal (θ = 0), which reduces the fall time to t = √(2Δy/g) and gives a theoretical landing distance from the exit velocity alone.</p>
+
+                <table class="data-table">
+                  <caption>Experimental vs. theoretical jet distance, by hole height</caption>
+                  <thead><tr><th>Height of hole</th><th class="num">Experimental</th><th class="num">Theoretical</th><th class="num">% Error</th></tr></thead>
+                  <tbody>
+                    <tr><td>0.153 m</td><td class="num">0.30 m</td><td class="num">0.20 m</td><td class="num error-note">33.3%</td></tr>
+                    <tr><td>0.099 m</td><td class="num">0.45 m</td><td class="num">0.21 m</td><td class="num error-note">53.3%</td></tr>
+                    <tr><td>0.050 m</td><td class="num">0.64 m</td><td class="num">0.18 m</td><td class="num error-note">71.9%</td></tr>
+                  </tbody>
+                </table>
+
+                <p>The high error was the most interesting part. My best explanation: the water wasn't being replenished as it drained, so by the time each photo was taken the water level — and therefore the driving height — had already dropped well below h₀. A constantly-topped-off bottle would hold that height constant and should track the theory much more closely. Camera-angle drag, the bottle's slight curvature, and an unmodeled drag coefficient likely added further error. A follow-up test with a filled cup and a single hole gave a comparable 47% error, suggesting the issue is systematic rather than a one-off.</p>
+
+                <p>The COMSOL comparison told a cleaner story: treating the bottle as a rectangle with turbulent (k-ε) flow, the simulated exit velocities were within about 3–9% of the theoretical Bernoulli prediction — much closer than the physical experiment, since COMSOL doesn't suffer from a draining water level.</p>
+
+                <table class="data-table">
+                  <caption>Theoretical vs. COMSOL exit velocity and error, by hole height</caption>
+                  <thead><tr><th>Height of hole</th><th class="num">Theoretical</th><th class="num">COMSOL</th><th class="num">% Error</th></tr></thead>
+                  <tbody>
+                    <tr><td>0.153 m</td><td class="num">1.111 m/s</td><td class="num">1.019 m/s</td><td class="num">9.08%</td></tr>
+                    <tr><td>0.099 m</td><td class="num">1.514 m/s</td><td class="num">1.401 m/s</td><td class="num">8.10%</td></tr>
+                    <tr><td>0.050 m</td><td class="num">1.804 m/s</td><td class="num">1.724 m/s</td><td class="num">2.88%</td></tr>
+                  </tbody>
+                </table>
+
+                <p>We were also asked to think about vena contracta — the narrowest point of a jet just past the orifice, where velocity is greatest. Extending the exit holes slightly out from the bottle wall in COMSOL confirmed this: velocity peaked right where the stream first left the bottle, and (consistent with theory) the lowest hole — with the greatest driving height — produced both the fastest stream and the longest landing distance.</p>
+
+                <div class="tag-row">
+                  <span class="tag">Bernoulli's equation</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Ballistics</span>
+                  <span class="tag">Error analysis</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Lab 3 — Flow Visualization &amp; PIV</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This lab aimed to visualize and quantify flow velocity around a custom object, using dye-based flow visualization and Particle Image Velocimetry (PIV) software. I laser-cut a six-piece acrylic "sparkle" shape on SolidWorks, epoxied it together, tied a string to it, and dragged it through a dye- or pepper-seeded water bath while filming from above.</p>
+
+                <p>Food coloring turned out to be a poor tracer: fully dissolved dye left no visible streamlines, powdered dye clumped instead of forming a clean line, and even pouring it fresh just ahead of the object only partly worked — usable streamlines appeared, along with visible vortices, but a lot of the coloring stayed inert rather than tracing the flow. Switching to black pepper as a tracer worked much better, and enabled quantitative PIV analysis (with an assist from openpiv in Python) once frame pairs were captured with enough contrast.</p>
+
+                <p>The resulting vector field was noisy at a glance — clumped pepper and inconsistent lighting didn't help — but filtering down to the curvature ("red") vectors revealed a coherent streamline pattern around the object, from which an average flow velocity could be extracted.</p>
+
+                <div class="eq-block">Re = ρVL/μ = VL/ν</div>
+
+                <table class="data-table">
+                  <caption>Reynolds number by trial (L = 0.1 m, ν = 1.00×10⁻⁶ m²/s)</caption>
+                  <thead><tr><th>Trial</th><th class="num">Velocity</th><th class="num">Re</th></tr></thead>
+                  <tbody>
+                    <tr><td>Iteration 4 (dye)</td><td class="num">0.30 m/s</td><td class="num">30,000</td></tr>
+                    <tr><td>Iteration 3.1 (dye)</td><td class="num">0.15 m/s</td><td class="num">15,000</td></tr>
+                    <tr><td>Pepper (PIV)</td><td class="num">0.08 m/s</td><td class="num">8,000</td></tr>
+                  </tbody>
+                </table>
+
+                <p>All three trials landed well into the turbulent regime (Re &gt; ~2,000–3,000). Since velocity is the only variable that changes Re here, reaching laminar or creeping flow with this setup would mean dragging the object at roughly 0.03 m/s or slower — slow enough that it would need a motor-driven pull rather than a hand-dragged string to hold steady.</p>
+
+                <p>COMSOL contour plots of the same 0.08 m/s flow in turbulent, laminar, and creeping regimes showed exactly the expected qualitative shift: turbulent flow swirled and expanded behind the object, laminar flow stayed mostly attached but rippled near the trailing edge, and creeping flow wrapped around the shape symmetrically with almost no wake — a clear visual confirmation that Reynolds number, not just speed, governs the character of the flow.</p>
+
+                <div class="tag-row">
+                  <span class="tag">PIV</span>
+                  <span class="tag">Python / OpenPIV</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Reynolds number</span>
+                  <span class="tag">Laser cutting</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>MTN2 — Drag Coefficient of a Four-Point Star</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>Using the same "sparkle"/star shape from Lab 3, this project estimated the drag coefficient three independent ways — dimensional analysis, potential-flow theory, and a COMSOL simulation — and compared how each captured (or missed) real flow physics.</p>
+
+                <p><strong>Dimensional analysis.</strong> With five governing variables and three fundamental dimensions, Buckingham Pi reduces the problem to two groups: C_d = f(1/Re). Since no drag-coefficient chart exists for a four-point star, I approximated it as a flat plate (sharp edges, large flat regions) at Re ≈ 1.6×10⁵ — solidly turbulent — reading a constant C_d ≈ 1.5 off the flat-plate chart. This assumption ignores curvature effects that would otherwise reduce drag.</p>
+
+                <p><strong>Potential-flow analysis.</strong> A MATLAB source-panel method modeled inviscid flow around the star outline, giving a lower C_d ≈ 1.137. The drop from 1.5 makes sense: the star's angled faces smooth the pressure gradient at the leading and trailing edges relative to a flat plate — but a purely inviscid model still can't capture real separation or viscous drag, so it understates true drag.</p>
+
+                <div class="eq-block">C_d = 2F_d / (ρU²A)</div>
+
+                <p><strong>COMSOL.</strong> A full Navier–Stokes simulation with the actual curved geometry gave the most physically grounded estimate, C_d ≈ 0.944, computed from the momentum deficit between inlet and outlet flow across the simulation domain. The streamlines showed clear separation and recirculation behind the star's tips, but the curvature promoted some pressure recovery, pulling the coefficient down relative to the sharper-edged analytical estimates.</p>
+
+                <table class="data-table">
+                  <caption>Drag coefficient estimate by method</caption>
+                  <thead><tr><th>Method</th><th class="num">C_d</th></tr></thead>
+                  <tbody>
+                    <tr><td>Dimensional analysis (flat-plate approx.)</td><td class="num">1.5</td></tr>
+                    <tr><td>Potential flow (inviscid)</td><td class="num">1.137</td></tr>
+                    <tr><td>COMSOL (viscous, turbulent)</td><td class="num">0.944</td></tr>
+                  </tbody>
+                </table>
+
+                <p>The three estimates form a consistent, decreasing trend as each model accounts for more real physics — geometry, then pressure distribution, then viscosity and separation. Lab 3's PIV data (Re ≈ 8,000, with visible vortices and chaotic particle motion) reinforces the story: potential flow predicts smooth, symmetric, nearly drag-free streamlines, while the real flow showed early separation at the star's sharp tips — the actual source of most of the drag, and the reason the physical estimate sits well above the inviscid prediction.</p>
+
+                <div class="tag-row">
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Potential flow</span>
+                  <span class="tag">Dimensional analysis</span>
+                  <span class="tag">Drag coefficient</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Lab 4 — Window Heat Loss</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This lab estimated heat loss through a dorm window three ways: direct thermistor measurement, an analytical resistance-network calculation, and a COMSOL simulation. Two thermistors — one indoor, one outdoor — were wired to a KB2040 microcontroller running MicroPython, using the Steinhart–Hart equation to convert resistance readings into temperature.</p>
+
+                <table class="data-table">
+                  <caption>Measured indoor/outdoor temperatures, by test</caption>
+                  <thead><tr><th>Test</th><th class="num">Outdoor avg.</th><th class="num">Indoor avg.</th><th class="num">ΔT</th></tr></thead>
+                  <tbody>
+                    <tr><td>Night (22:50–23:05)</td><td class="num">6.28 °C</td><td class="num">18.07 °C</td><td class="num">11.79 °C</td></tr>
+                    <tr><td>Morning</td><td class="num">6.41 °C</td><td class="num">15.39 °C</td><td class="num">8.98 °C</td></tr>
+                  </tbody>
+                </table>
+
+                <div class="eq-block">q = ΔT / R_total &nbsp;where&nbsp; R_total = 1/h_in + L/k_glass + 1/h_out</div>
+
+                <p>With h_in = 4 W/m²K (still indoor air), h_out = 25 W/m²K (moderate wind), and single-pane glass (k = 0.96 W/mK, 4 mm thick), R_total came out to 0.294 m²K/W — dominated almost entirely by the indoor convective resistance, which is why improving indoor air circulation matters more than outdoor insulation for a window like this.</p>
+
+                <p>Radiation turned out to matter more than expected: using the night-test temperatures, q_rad ≈ 56 W/m² against q_conv ≈ 40.1 W/m² — radiation was actually the larger loss term. Folding an effective radiative coefficient (h_rad ≈ 5 W/m²K) into h_in dropped R_total to 0.155 m²K/W and raised the predicted flux to 76.1 W/m².</p>
+
+                <table class="data-table">
+                  <caption>Final heat flux comparison</caption>
+                  <thead><tr><th>Source</th><th class="num">q (W/m²)</th></tr></thead>
+                  <tbody>
+                    <tr><td>Analytical (night, with radiation)</td><td class="num">76.1</td></tr>
+                    <tr><td>COMSOL simulation</td><td class="num">76.554</td></tr>
+                    <tr><td>Analytical (morning)</td><td class="num">57.9</td></tr>
+                  </tbody>
+                </table>
+
+                <p>The night-test analytical value and the COMSOL result agreed almost exactly, suggesting the assumed boundary conditions closely matched actual nighttime steady-state behavior. The morning value came in lower, which tracks — daytime solar heating, shifting wind, and a rising outdoor temperature all reduce net heat loss and pull conditions away from what COMSOL assumed.</p>
+
+                <p>Scaling the nighttime flux to a full night (U = 6.45 W/m²K over 12 hours) gave a total estimated loss of about 0.91 kWh through this one window — though that assumes a constant ΔT, which held much better in the morning data (14% variation) than overnight (38% variation, likely from the heating system cycling).</p>
+
+                <p>The thermistors themselves introduced real limitations: nonlinear resistance-to-temperature behavior (relying on the simplified Steinhart–Hart form), slight self-heating from the measurement current, sensitivity to how tightly each sensor was taped to its surface, and ordinary unit-to-unit drift. None of these invalidate the results, but they explain why the measurements don't match the models perfectly.</p>
+
+                <div class="tag-row">
+                  <span class="tag">Thermistors</span>
+                  <span class="tag">MicroPython</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Conduction &amp; convection</span>
+                  <span class="tag">Radiation</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Lab 5 — Cooling Curve of a Water Cup</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This lab modeled the cooling rate of a hot liquid (water standing in for coffee) using the lumped-capacitance assumption, then checked that assumption experimentally, analytically, and in COMSOL. Three thermistors — top-center, top-side, and bottom-side — tracked temperature at once, positioned to catch any top-to-bottom or center-to-wall gradient that would violate the "lumped" (single-node) assumption.</p>
+
+                <p>All three sensors tracked each other within a few tenths of a degree throughout the cooldown, which was the key experimental result: the water really does behave as a single thermal node, despite a computed Biot number of 0.2 — technically outside the usual Bi &lt; 0.1 rule of thumb for a valid lumped analysis.</p>
+
+                <div class="eq-block">θ(t) = θ₀·e^(−hA/ρVc_p · t) &nbsp;→&nbsp; fit: a = 72.2, b = −0.000428</div>
+
+                <p>Fitting the exponential decay of θ(t) = T − T_∞ gave an effective convective coefficient of h ≈ 24.3 W/m²K and an effective resistance R ≈ 1.87 K/W directly from the data — useful as a benchmark for the analytical and numerical models that followed.</p>
+
+                <p>A resistance-network model of the cup (treating it as a truncated cone, water-to-cup-to-air on the sides, ignoring the insulated bottom) with textbook convection values (h_water = 500, h_air = 10 W/m²K) gave R_total = 4.76 K/W — more than double the experimental value. A MATLAB Euler's-method simulation using these same assumptions badly under-predicted the cooling rate, and adding a radiation term barely changed the result.</p>
+
+                <p>The fix turned out to be h_air itself: raising it to 25 W/m²K (from the textbook 10) brought R_total down to 2.03 K/W, much closer to experiment — implying the "extra" cooling in the real system came from effects the simple model doesn't capture (air-gap conduction, table contact, minor water disturbance) all folding into an inflated effective h.</p>
+
+                <p>COMSOL runs told the same story in three steps: with h = 5 W/m²K on both water and air surfaces, the simulated cup stalled at 313 K — 3.3% off in temperature but over 1,300% too slow in time. Raising h to 50 W/m²K everywhere got temperature within 0.3% and time within 26%. Splitting the walls (70 W/m²K) from the top surface (50 W/m²K) tightened both errors to under 1%.</p>
+
+                <div class="tag-row">
+                  <span class="tag">Thermistors</span>
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Lumped capacitance</span>
+                  <span class="tag">Biot number</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>MTN3 — Heat Transfer Through a Running Jacket</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This project measured heat transfer through a jacket while standing still versus running, comparing thermistor data against an analytical thermal-resistance model and a matching COMSOL simulation — then used the same run to estimate aerodynamic drag on a moving person.</p>
+
+                <div class="eq-block">R_total = R_in + R_cond + R_out &nbsp;&nbsp; q = (T_in − T_∞) / R_total</div>
+
+                <p>With T_in = 35 °C (skin/clothing interface), T_∞ = 0.56 °C, jacket thickness L = 5 mm and k = 0.040 W/mK, and outside convection rising from h = 8 W/m²K (still) to 30 W/m²K (running), the model predicted heat flux would <em>increase</em> while running:</p>
+
+                <table class="data-table">
+                  <caption>Analytical vs. COMSOL vs. experimental heat flux</caption>
+                  <thead><tr><th>Condition</th><th class="num">Analytical</th><th class="num">COMSOL</th><th class="num">Experimental</th></tr></thead>
+                  <tbody>
+                    <tr><td>Standing still</td><td class="num">76.5 W/m²</td><td class="num">76.5 W/m²</td><td class="num">214.4 W/m²</td></tr>
+                    <tr><td>Running</td><td class="num">96.1 W/m²</td><td class="num">96.1 W/m²</td><td class="num">188 W/m²</td></tr>
+                  </tbody>
+                </table>
+
+                <p>COMSOL validated the analytical model almost exactly in both cases — but the thermistor data told a different story on two fronts: measured flux was far higher than either model predicted, and it <em>dropped</em> while running instead of rising. The outer surface did cool more while running, matching the model's qualitative trend, but running clearly changes more than just h_out — likely air gaps, insulation contact, and exposure shifting all at once, which a single-layer 1-D model can't separate out.</p>
+
+                <p>Using the run itself (≈160.9 m covered in 55.2 s, or 2.9 m/s) as a stand-in for wind speed on the runner's body gave a drag-force estimate:</p>
+
+                <div class="eq-block">F_D = 0.5ρC_dAV² &nbsp;→&nbsp; F_D ≈ 3.03 N &nbsp;(ρ=1.2, C_d=1.0, A=0.6 m², V=2.9 m/s)</div>
+
+                <p>A few newtons is the right order of magnitude for aerodynamic drag at an easy running pace, and since drag scales with V², it should grow quickly at higher speeds. Modeling the body as a rectangular bluff body, the flow separates sharply at the front corners, producing the low-pressure wake that accounts for most of that drag.</p>
+
+                <div class="tag-row">
+                  <span class="tag">Thermistors</span>
+                  <span class="tag">KB2040</span>
+                  <span class="tag">COMSOL</span>
+                  <span class="tag">Conduction &amp; convection</span>
+                  <span class="tag">Drag force</span>
                 </div>
               </div>
             </div>

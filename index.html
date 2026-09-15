@@ -1,1 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raphael Lemus Solis — Mechanical Engineer</title>
+<meta name="description" content="Mechanical Engineering major, Physics minor at Tufts University. Projects in robotics, CAD, and fabrication.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #101314;
+    --bg-elevated: #171b1d;
+    --line: #2a3032;
+    --line-soft: #1e2325;
+    --text: #F2EFEA;
+    --text-muted: #9AA3A6;
+    --accent: #E8871E;
+    --accent-soft: rgba(232,135,30,0.12);
+    --blue: #4C8CA8;
+    --font-display: 'Archivo', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --max: 880px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(16,19,20,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-inner{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mark{
+    font-family: var(--font-mono);
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--line);
+    padding: 4px 9px;
+    border-radius: 2px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .mark span{ color: var(--accent); }
+
+  nav.links{ display: flex; gap: 28px; }
+  nav.links a{
+    font-size: 14.5px;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+  }
+  nav.links a:hover{ color: var(--text); }
+
+  .nav-toggle{
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--text);
+    width: 38px;
+    height: 34px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 760px){
+    nav.links{
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      padding: 18px 32px 24px;
+      gap: 16px;
+    }
+    nav.links.open{ display: flex; }
+    .nav-toggle{ display: block; }
+  }
+
+  /* ---------- HERO ---------- */
+  section.hero{
+    position: relative;
+    padding: 96px 0 88px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero-grid-bg{
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image:
+      linear-gradient(var(--blue) 1px, transparent 1px),
+      linear-gradient(90deg, var(--blue) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+  }
+  .hero-inner{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 860px){
+    .hero-inner{ grid-template-columns: 1fr; }
+  }
+
+  .kicker{
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    color: var(--blue);
+    margin: 0 0 18px;
+  }
+
+  h1.name{
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+
+  .underline{
+    height: 4px;
+    width: 96px;
+    background: var(--accent);
+    margin: 18px 0 22px;
+    animation: draw 0.9s cubic-bezier(.2,.7,.2,1) both;
+    animation-delay: 0.15s;
+    transform-origin: left;
+  }
+  @keyframes draw{
+    from{ width: 0; }
+    to{ width: 96px; }
+  }
+
+  .role{
+    font-size: 19px;
+    color: var(--text-muted);
+    margin: 0 0 20px;
+    max-width: 46ch;
+  }
+  .role strong{ color: var(--text); font-weight: 600; }
+
+  p.tagline{
+    font-size: 17px;
+    max-width: 56ch;
+    color: var(--text);
+  }
+
+  /* Nameplate panel */
+  .nameplate{
+    position: relative;
+    border: 1px solid var(--line);
+    background: var(--bg-elevated);
+    padding: 26px 24px;
+    border-radius: 2px;
+  }
+  .nameplate::before, .nameplate::after,
+  .nameplate .tick-tl, .nameplate .tick-br{
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--blue);
+    opacity: 0.7;
+  }
+  .nameplate::before{ top: -1px; left: -1px; border-top: 2px solid var(--blue); border-left: 2px solid var(--blue); }
+  .nameplate::after{ bottom: -1px; right: -1px; border-bottom: 2px solid var(--blue); border-right: 2px solid var(--blue); }
+
+  .nameplate-title{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .spec-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+  }
+  .spec-row:last-child{ border-bottom: none; }
+  .spec-label{
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+  .spec-value{
+    text-align: right;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 76px 0; border-bottom: 1px solid var(--line-soft); }
+  section:last-of-type{ border-bottom: none; }
+
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .section-head .index{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  h2{
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .lede{
+    max-width: 68ch;
+    font-size: 17px;
+    color: var(--text-muted);
+    margin: 0 0 8px;
+  }
+
+  /* About */
+  .about-cols{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 760px){ .about-cols{ grid-template-columns: 1fr; } }
+  .about-cols p{ font-size: 16.5px; max-width: 62ch; }
+  .interest-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .interest-list li{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: var(--text-muted);
+  }
+
+  /* Projects */
+  .project{
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line-soft);
+    transition: border-color 0.2s ease;
+  }
+  .project:first-of-type{ border-top: none; }
+  .project:hover{ border-top-color: var(--accent); }
+  .project:hover + .project{ border-top-color: var(--accent); }
+  @media (max-width: 640px){
+    .project{ grid-template-columns: 1fr; gap: 10px; }
+  }
+  .project-date{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--blue);
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+  .project-title{
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 21px;
+    margin: 0 0 8px;
+  }
+  .project-course{
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin: 0 0 12px;
+  }
+  .project-desc{
+    max-width: 62ch;
+    font-size: 15.5px;
+    margin: 0 0 14px;
+  }
+  .tag-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 4px 9px;
+    border-radius: 2px;
+  }
+
+  /* Experience / research */
+  .job{
+    padding: 24px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .job:first-of-type{ border-top: none; }
+  .job-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .job-title{ font-size: 17px; font-weight: 600; margin: 0; }
+  .job-org{ color: var(--text-muted); font-size: 14.5px; }
+  .job-date{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--blue);
+  }
+  .job ul{
+    margin: 10px 0 0;
+    padding-left: 20px;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .job li{ margin-bottom: 6px; max-width: 66ch; }
+
+  /* Skills */
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 48px;
+  }
+  @media (max-width: 640px){ .skills-grid{ grid-template-columns: 1fr; } }
+  .skill-group h3{
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+  }
+  .skill-group ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .skill-group li{
+    font-size: 16px;
+    padding: 9px 0;
+    border-top: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+  }
+  .skill-group li:first-child{ border-top: none; }
+  .skill-note{
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--accent);
+  }
+
+  /* Education */
+  .edu-block{
+    padding: 22px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .edu-block:first-of-type{ border-top: none; }
+  .edu-head{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .edu-school{ font-size: 18px; font-weight: 700; margin: 0; }
+  .edu-date{ font-family: var(--font-mono); font-size: 13px; color: var(--blue); }
+  .edu-program{ color: var(--text-muted); margin: 4px 0 14px; font-size: 15px; }
+  .coursework{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .coursework span{
+    font-size: 12.5px;
+    font-family: var(--font-mono);
+    border: 1px solid var(--line);
+    color: var(--text-muted);
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
+
+  /* Contact / footer */
+  footer{
+    padding: 72px 0 48px;
+  }
+  .contact-title{
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    max-width: 16ch;
+    margin: 0 0 32px;
+  }
+  .contact-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 56px;
+  }
+  .contact-links a{
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 12px 18px;
+    border-radius: 2px;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-links a:hover{ border-color: var(--accent); color: var(--accent); }
+  .foot-note{
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--line-soft);
+    padding-top: 24px;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="mark">RL<span>S</span></a>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <p class="kicker">MEDFORD, MA</p>
+        <h1 class="name">Raphael<br>Lemus Solis</h1>
+        <div class="underline"></div>
+        <p class="role">Mechanical Engineering major, <strong>Physics</strong> minor at Tufts University.</p>
+        <p class="tagline">I design, model, and build physical systems — from a motorized lift-robot to a sand-cast sundial — and like projects that move between CAD, the shop, and testing in the same week.</p>
+      </div>
+      <div class="nameplate">
+        <p class="nameplate-title">Spec Sheet</p>
+        <div class="spec-row"><span class="spec-label">Institution</span><span class="spec-value">Tufts University</span></div>
+        <div class="spec-row"><span class="spec-label">Program</span><span class="spec-value">B.S. Mech. Eng. / Physics Minor</span></div>
+        <div class="spec-row"><span class="spec-label">Expected</span><span class="spec-value">May 2027</span></div>
+        <div class="spec-row"><span class="spec-label">GPA</span><span class="spec-value">3.54</span></div>
+        <div class="spec-row"><span class="spec-label">Honors</span><span class="spec-value">BEST Scholar</span></div>
+        <div class="spec-row"><span class="spec-label">Dean's List</span><span class="spec-value">6 semesters</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head"><span class="index">01</span><h2>About</h2></div>
+      <div class="about-cols">
+        <p>I'm a junior at Tufts University studying mechanical engineering with a physics minor. My coursework runs through thermal-fluid systems, materials and manufacturing, mechanics, and controls, and outside of class I've built everything from a load-lifting robot to a hand-fabricated sundial. In summer 2024 I spent a month at the University of Tübingen studying sustainability and AI policy while picking up German.</p>
+        <ul class="interest-list">
+          <li>Languages &amp; culture</li>
+          <li>Video games</li>
+          <li>Space</li>
+          <li>Reading</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><span class="index">02</span><h2>Projects</h2></div>
+      <p class="lede">Coursework projects spanning controls, CAD, and manufacturing.</p>
+
+      <div class="project">
+        <div class="project-date">NOV–DEC 2025</div>
+        <div>
+          <h3 class="project-title">Car Robot</h3>
+          <p class="project-course">Electronics &amp; Controls I</p>
+          <p class="project-desc">Designed and built a car-style robot able to lift varying loads off a table. Wrote the control logic that regulated motor speed and steering, then tested and debugged the electrical and control systems to improve reliability.</p>
+          <div class="tag-row">
+            <span class="tag">Motor control</span>
+            <span class="tag">Circuit debugging</span>
+            <span class="tag">Control logic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-date">APR–MAY 2025</div>
+        <div>
+          <h3 class="project-title">Desk Add-Ons</h3>
+          <p class="project-course">Engineering Design I</p>
+          <p class="project-desc">Designed an attachable, detachable desk cabinet built around a push-to-close mechanism, a ratchet system for effortless height adjustment, and a shopping-cart-style handle for mobility — starting from user-centered design research and ending in full SolidWorks models and drawings.</p>
+          <div class="tag-row">
+            <span class="tag">SolidWorks</span>
+            <span class="tag">Mechanical drawings</span>
+            <span class="tag">User-centered design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-date">NOV–DEC 2024</div>
+        <div>
+          <h3 class="project-title">Sundial Coat Hanger</h3>
+          <p class="project-course">Materials &amp; Manufacturing I</p>
+          <p class="project-desc">Fabricated a working sundial coat hanger using sand-casting, then built an FEA model to find the material's maximum tensile strength — carrying the project from concept to finished prototype inside a one-month deadline.</p>
+          <div class="tag-row">
+            <span class="tag">Sand casting</span>
+            <span class="tag">FEA</span>
+            <span class="tag">SolidWorks Simulation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head"><span class="index">03</span><h2>Experience &amp; Research</h2></div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <p class="job-title">BEST Scholar Peer Mentor</p>
+            <p class="job-org">Tufts University, Medford, MA</p>
+          </div>
+          <span class="job-date">SUMMER 2025</span>
+        </div>
+        <ul>
+          <li>Mentored 12 incoming pre-matriculated students through an academic and social transition program.</li>
+          <li>Organized events and guest presentations, and ran hands-on engineering workshops to help students explore majors.</li>
+          <li>Built an inclusive, growth-oriented environment for students from diverse backgrounds.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <p class="job-title">IDEA Lab — Member</p>
+            <p class="job-org">Tufts University, Medford, MA</p>
+          </div>
+          <span class="job-date">FEB–SEP 2025</span>
+        </div>
+        <ul>
+          <li>Helped stand up a new research group studying transboundary water-basin pollution.</li>
+          <li>Took part in strategy discussions to define the group's goals, priorities, and action plans.</li>
+          <li>Drafted interview questions to guide data collection and keep it relevant and accurate.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <p class="job-title">Library Assistant</p>
+            <p class="job-org">Parlin Memorial Library, Everett, MA</p>
+          </div>
+          <span class="job-date">OCT 2022–JAN 2025</span>
+        </div>
+        <ul>
+          <li>Ran library programs for children ages 5–10.</li>
+          <li>Helped patrons find resources and services, and kept materials organized on the floor.</li>
+          <li>Checked materials in and out through the library management system.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><span class="index">04</span><h2>Skills</h2></div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Programming</h3>
+          <ul>
+            <li>MATLAB <span class="skill-note">Certified</span></li>
+            <li>Python</li>
+            <li>Java</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>CAD &amp; Simulation</h3>
+          <ul>
+            <li>SolidWorks</li>
+            <li>SolidWorks Simulation</li>
+            <li>Onshape</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Fabrication</h3>
+          <ul>
+            <li>3D printing</li>
+            <li>Laser cutting</li>
+            <li>Sand casting</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul>
+            <li>English <span class="skill-note">Fluent</span></li>
+            <li>Spanish <span class="skill-note">Native</span></li>
+            <li>German <span class="skill-note">A1</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head"><span class="index">05</span><h2>Education</h2></div>
+
+      <div class="edu-block">
+        <div class="edu-head">
+          <h3 class="edu-school">Tufts University</h3>
+          <span class="edu-date">EXPECTED MAY 2027</span>
+        </div>
+        <p class="edu-program">B.S. Mechanical Engineering, Physics Minor — GPA 3.54, Medford, MA</p>
+        <div class="coursework">
+          <span>Thermal Fluid Systems II</span>
+          <span>Materials &amp; Manufacturing II</span>
+          <span>Mechanics II</span>
+          <span>Electronics &amp; Controls II</span>
+          <span>Numerical Methods (MATLAB)</span>
+          <span>Intro to Computing (Python)</span>
+          <span>Modern Physics</span>
+          <span>Biophysics</span>
+          <span>Architectural Acoustics</span>
+          <span>Simple Robotics</span>
+          <span>Calculus 3</span>
+          <span>Differential Equations</span>
+        </div>
+      </div>
+
+      <div class="edu-block">
+        <div class="edu-head">
+          <h3 class="edu-school">University of Tübingen</h3>
+          <span class="edu-date">MAY–JUN 2024</span>
+        </div>
+        <p class="edu-program">Tufts Abroad Program — Tübingen, Germany</p>
+        <div class="coursework">
+          <span>German Language (A1)</span>
+          <span>Bees, Sustainability &amp; Society</span>
+          <span>AI and the EU</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <h2 class="contact-title">Let's talk mechanical engineering.</h2>
+      <div class="contact-links">
+        <a href="mailto:raphaellemussolis07@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/rls27" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Raphael-Lemus" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="foot-note">Raphael Lemus Solis — Medford, MA</p>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
 

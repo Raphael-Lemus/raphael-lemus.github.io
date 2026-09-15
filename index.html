@@ -924,6 +924,11 @@
               <div class="experiment">
                 <p>This lab tested how far water shoots out of holes at different heights on a bottle, using Bernoulli's equation to predict exit velocity and basic ballistics to predict landing distance. Three assumptions made Bernoulli tractable here: the flow is incompressible, steady, and inviscid.</p>
 
+                <figure class="chart">
+                  <img src="assets/lab-bernoulli-bottle-setup.jpg" alt="Photo of a water bottle with three holes punched down its side, each shooting a stream of water into a sink, with a ruler placed below to measure landing distance.">
+                  <figcaption>Experimental setup — three exit holes at different heights, ruler below for measuring jet distance.</figcaption>
+                </figure>
+
                 <div class="eq-block">P₁ + ½ρv₀² + ρgh₀ = P₂ + ½ρv₁² + ρgh₁</div>
 
                 <p>Both hole and bottle-top are open to atmosphere, so P₁ = P₂ and that term cancels. The bottle's cross-section is so much larger than the holes that, by continuity (A₁v₁ = A₂v₂), the velocity at the top is effectively zero. That leaves a clean relationship between exit velocity and the height of water above the hole:</p>
@@ -952,9 +957,36 @@
                   </tbody>
                 </table>
 
-                <p>The high error was the most interesting part. My best explanation: the water wasn't being replenished as it drained, so by the time each photo was taken the water level — and therefore the driving height — had already dropped well below h₀. A constantly-topped-off bottle would hold that height constant and should track the theory much more closely. Camera-angle drag, the bottle's slight curvature, and an unmodeled drag coefficient likely added further error. A follow-up test with a filled cup and a single hole gave a comparable 47% error, suggesting the issue is systematic rather than a one-off.</p>
+                <p>The high error was the most interesting part. My best explanation: the water wasn't being replenished as it drained, so by the time each photo was taken the water level — and therefore the driving height — had already dropped well below h₀. A constantly-topped-off bottle would hold that height constant and should track the theory much more closely. Camera-angle drag, the bottle's slight curvature, and an unmodeled drag coefficient likely added further error.</p>
+
+                <p>A follow-up test with a filled cup and a single hole gave a comparable 47% error, suggesting the issue is systematic rather than a one-off — the cup's water level was marked off with tape to track the driving height as it drained.</p>
+
+                <figure class="chart">
+                  <img src="assets/lab-bernoulli-cup-setup.jpg" alt="Photo of a clear plastic cup with a small taped-off hole near the bottom and water partially filled to a marked line, used as a follow-up single-hole test.">
+                  <figcaption>Follow-up single-hole test — cup marked to track water level against the exit hole.</figcaption>
+                </figure>
 
                 <p>The COMSOL comparison told a cleaner story: treating the bottle as a rectangle with turbulent (k-ε) flow, the simulated exit velocities were within about 3–9% of the theoretical Bernoulli prediction — much closer than the physical experiment, since COMSOL doesn't suffer from a draining water level.</p>
+
+                <figure class="chart">
+                  <img src="assets/lab-bernoulli-comsol-overview.png" alt="COMSOL velocity magnitude contour of the full rectangular bottle domain, showing three marked exit points along the right edge where jets of higher velocity form.">
+                  <figcaption>COMSOL velocity field for the full bottle domain, with all three exit holes marked.</figcaption>
+                </figure>
+
+                <div class="photo-grid">
+                  <figure>
+                    <img src="assets/lab-bernoulli-comsol-hole1.png" alt="COMSOL close-up of the highest exit hole showing a modest velocity spike in green at the wall.">
+                    <figcaption>Hole 1 (0.153 m) — lowest exit velocity</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="assets/lab-bernoulli-comsol-hole2.png" alt="COMSOL close-up of the middle exit hole showing a stronger velocity spike in yellow-green at the wall.">
+                    <figcaption>Hole 2 (0.099 m) — middle exit velocity</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="assets/lab-bernoulli-comsol-hole3.png" alt="COMSOL close-up of the lowest exit hole showing the strongest velocity spike in red at the wall.">
+                    <figcaption>Hole 3 (0.050 m) — highest exit velocity</figcaption>
+                  </figure>
+                </div>
 
                 <table class="data-table">
                   <caption>Theoretical vs. COMSOL exit velocity and error, by hole height</caption>

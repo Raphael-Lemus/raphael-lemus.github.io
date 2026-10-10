@@ -436,6 +436,21 @@
     height: auto;
     border-radius: 1px;
   }
+  figure.chart.narrow img{
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  figure.chart.slim img{
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .report-links{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+  }
+  .report-links a{ color: var(--accent); }
   figure.chart figcaption{
     font-family: var(--font-mono);
     font-size: 12px;
@@ -475,6 +490,17 @@
 
   /* Course / lab accordions */
   details.course-dropdown{
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--bg-elevated);
+  }
+  .project + details.course-dropdown{ margin-top: 28px; }
+  details.course-dropdown + details.course-dropdown{ margin-top: 16px; }
+  .lab-body video{
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 0 20px;
     border: 1px solid var(--line);
     border-radius: 2px;
     background: var(--bg-elevated);
@@ -725,7 +751,7 @@
   <section id="projects">
     <div class="wrap">
       <div class="section-head"><span class="index">02</span><h2>Projects</h2></div>
-      <p class="lede">Coursework projects spanning controls, CAD, and manufacturing.</p>
+      <p class="lede">Coursework projects spanning controls, CAD, manufacturing, and mechanics.</p>
 
       <div class="project">
         <div class="project-date">NOV-DEC 2025</div>
@@ -768,6 +794,256 @@
           </div>
         </div>
       </div>
+
+      <details class="course-dropdown">
+        <summary class="course-summary">
+          <span>ME20 - Statics</span>
+          <span class="chevron">▶</span>
+        </summary>
+        <div class="course-body">
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Truss Project - Howe Truss</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p class="experiment-label">WITH BREOGHAN CONCHAS MARQUEZ</p>
+                <p>Breoghan and I designed and built a small plastic Howe truss, then predicted every support reaction and member force by hand and checked them against a physical test, an online truss calculator, and our own MATLAB code.</p>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Mechanics/ME20_Truss/ME20_Truss_Photo.jpg" alt="Photo of the finished white plastic Howe truss, built from square members joined with flat gusset plates.">
+                  <figcaption>The finished Howe truss.</figcaption>
+                </figure>
+
+                <p>With 8 joints, 13 members, and 3 reactions (a pin at A and a roller at E), the truss satisfies 2M = N + R, so it is statically determinate. Every angle is 45° or 90°, with four 0.046&nbsp;m panels for a 0.184&nbsp;m span.</p>
+
+                <div class="eq-block">2M = N + R &nbsp;→&nbsp; 2(8) = 13 + 3</div>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Mechanics/ME20_Truss/ME20_Truss_Diagram.png" alt="Line drawing of the Howe truss with a pin support at the left and a roller at the right, labeled M = 8, N = 13, R = 3.">
+                  <figcaption>Truss layout - pin at A, roller at E.</figcaption>
+                </figure>
+
+                <p>We tested two loading conditions: a single 200&nbsp;g mass at the first panel point, and 50&nbsp;g plus 100&nbsp;g masses at two interior panel points. Setting the truss on a digital scale under each support let us measure the reactions directly.</p>
+
+                <div class="photo-grid two">
+                  <figure>
+                    <img loading="lazy" src="assets/Mechanics/ME20_Truss/ME20_Truss_Test1.jpg" alt="The truss bridging two digital scales with one large weight on its left side; the scales read about 151 and 49 g.">
+                    <figcaption>Condition 1 - 200 g load</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Mechanics/ME20_Truss/ME20_Truss_Test2.jpg" alt="The truss bridging two digital scales with two hooked weights near its middle and right; the scales read about 50 and 100 g.">
+                    <figcaption>Condition 2 - 50 g + 100 g loads</figcaption>
+                  </figure>
+                </div>
+
+                <table class="data-table">
+                  <caption>Support reactions, theory vs. measurement (N)</caption>
+                  <thead><tr><th>Condition</th><th class="num">Ay theory</th><th class="num">Ay measured</th><th class="num">Ey theory</th><th class="num">Ey measured</th></tr></thead>
+                  <tbody>
+                    <tr><td>1 - 200 g</td><td class="num">1.47</td><td class="num">1.481</td><td class="num">0.49</td><td class="num">0.480</td></tr>
+                    <tr><td>2 - 50 g + 100 g</td><td class="num">0.490</td><td class="num">0.490</td><td class="num">0.981</td><td class="num">0.979</td></tr>
+                  </tbody>
+                </table>
+
+                <p>The measurements landed within about 0.01&nbsp;N of theory, showing the truss was built true to our assumptions. Solving the method of joints by hand, every member force matched the online calculator with 0% error, and our MATLAB code agreed on the members we checked. Condition 1 had one zero-force member (GC); condition 2 had three (FD, FC, and GC).</p>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Mechanics/ME20_Truss/ME20_Truss_Matlab.png" alt="MATLAB plots of the truss under both loading conditions, with applied loads and support reactions drawn as arrows.">
+                  <figcaption>MATLAB model of both loading conditions.</figcaption>
+                </figure>
+
+                <p>The project showed us why triangles make trusses such a sturdy bridge form, and why it's worth double-checking calculations with more than one tool before trusting a design with people's safety.</p>
+
+                <p class="report-links">Full report: <a href="assets/Mechanics/ME20_Truss/ME20_Truss_Report.pdf" target="_blank" rel="noopener">PDF</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">Method of joints</span>
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">Fabrication</span>
+                  <span class="tag">Experimental validation</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Final Project - Fixed-Fixed Beam</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This project analyzed a hollow tube fixed at both ends with a point load at midspan, solving it by hand and comparing the results with FEA from the ME10 lab. With four unknown reactions and only three equilibrium equations, the beam is statically indeterminate, so the problem took a few more steps than usual.</p>
+
+                <p>Using superposition, we removed the redundant moment and force at B, treated the beam as a cantilever, and required the total slope and deflection at the fixed end to be zero. That gave reactions of F/2 at each end and end moments of ±FL/8.</p>
+
+                <figure class="chart narrow">
+                  <img loading="lazy" src="assets/Mechanics/ME20_Beam/ME20_Beam_Superposition.png" alt="Hand-drawn superposition sketches: the fixed-fixed beam, the cantilever with the redundants removed, and the cases for the force and moment at B, with deflected shapes.">
+                  <figcaption>Superposition - splitting the indeterminate beam into cantilever cases.</figcaption>
+                </figure>
+
+                <div class="eq-block">A_y = B_y = F/2 &nbsp;&nbsp; M_A = FL/8 &nbsp;&nbsp; σ_max = FLd₀ / 16I</div>
+
+                <p>Integrating the moment equations twice, with zero slope and deflection at both walls and a continuity check at midspan, gave the deflection curve. For a 25&nbsp;mm outer, 17&nbsp;mm inner diameter tube, L&nbsp;=&nbsp;0.77&nbsp;m, F&nbsp;=&nbsp;1300&nbsp;N, and E&nbsp;=&nbsp;210&nbsp;GPa, the maximum stress and deflection both occur at midspan.</p>
+
+                <table class="data-table">
+                  <caption>Hand calculation vs. ME10 FEA</caption>
+                  <thead><tr><th>Quantity</th><th class="num">Hand calc</th><th class="num">FEA</th></tr></thead>
+                  <tbody>
+                    <tr><td>Max normal stress</td><td class="num">103.75 MPa</td><td class="num">88.5 MPa</td></tr>
+                    <tr><td>Max deflection</td><td class="num">-0.976 mm</td><td class="num">-0.88 to -0.91 mm</td></tr>
+                  </tbody>
+                </table>
+
+                <div class="photo-grid two">
+                  <figure>
+                    <img loading="lazy" src="assets/Mechanics/ME20_Beam/ME20_Beam_FEA_Stress.png" alt="FEA plot of normal stress along the beam, peaking near 88 MPa at midspan and dropping to about -100 MPa at the fixed ends.">
+                    <figcaption>FEA - normal stress along the beam</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Mechanics/ME20_Beam/ME20_Beam_FEA_Deflection.png" alt="FEA plot of vertical deflection along the beam, a smooth curve reaching about -0.88 mm at midspan.">
+                    <figcaption>FEA - vertical deflection along the beam</figcaption>
+                  </figure>
+                </div>
+
+                <p>The FEA underestimated the stress, likely because the model leaves out the object's finer details. The shapes matched, but the FEA curves are smooth while our hand-drawn diagrams turn sharply - the FEA uses many nodes, while our calculation had a single load point. The main takeaway was that software isn't automatically more exact than hand calculations, and checking one against the other is what catches mistakes.</p>
+
+                <p class="report-links">Full calculations: <a href="assets/Mechanics/ME20_Beam/ME20_Beam_Report.pdf" target="_blank" rel="noopener">PDF</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">Indeterminate beams</span>
+                  <span class="tag">Superposition</span>
+                  <span class="tag">Beam deflection</span>
+                  <span class="tag">FEA</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </details>
+
+      <details class="course-dropdown">
+        <summary class="course-summary">
+          <span>ME21 - Dynamics</span>
+          <span class="chevron">▶</span>
+        </summary>
+        <div class="course-body">
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Project 1 - Slider-Crank Mechanism</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p class="experiment-label">WITH RYDER WANT</p>
+                <p>Ryder and I analyzed the motion of a crank-driven linkage three ways: a hand-derived velocity model coded in MATLAB, a SolidWorks motion study, and video tracking of the physical mechanism.</p>
+
+                <video controls preload="none" playsinline>
+                  <source src="assets/Mechanics/ME21_Mechanism/ME21_Mechanism_PartA.mp4" type="video/mp4">
+                </video>
+
+                <p>Starting from the relative-velocity equations for the crank (AB) and connecting rod (BP), I solved for the slider's velocity in terms of the crank angle θ and rod angle φ.</p>
+
+                <div class="eq-block">v_P = −ω_AB·r(sin θ + cos θ·tan φ) &nbsp;&nbsp; φ = sin⁻¹((r/L)·sin θ)</div>
+
+                <figure class="chart narrow">
+                  <img loading="lazy" src="assets/Mechanics/ME21_Mechanism/ME21_Mechanism_Derivation.jpg" alt="Notebook page with a sketch of the linkage labeled A, B, and P, and the handwritten derivation of the slider velocity.">
+                  <figcaption>Hand derivation of the slider velocity.</figcaption>
+                </figure>
+
+                <p>Coded in MATLAB, the analytical vertical velocity lined up closely with the SolidWorks motion study across every cycle.</p>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Mechanics/ME21_Mechanism/ME21_Mechanism_VelocityGraph.png" alt="Plot of vertical velocity in inches per second over time, a repeating wave between about -9.5 and 9.5 in/s, with SolidWorks points falling on the MATLAB curve.">
+                  <figcaption>Vertical slider velocity - MATLAB model vs. SolidWorks.</figcaption>
+                </figure>
+
+                <p>Next, we filmed the mechanism in slow motion and tracked a point frame by frame. Correcting for the 1/8-speed footage, 3 revolutions gave a speed of about 62&nbsp;rpm. The tracked velocities and path were then compared with a SolidWorks motion study of the same point.</p>
+
+                <figure class="chart narrow">
+                  <img loading="lazy" src="assets/Mechanics/ME21_Mechanism/ME21_Mechanism_VelocityX.png" alt="Two stacked plots of horizontal velocity over 10 seconds: a noisy curve from video tracking (Part C) above a smooth wave between about -4 and 4 m/s from SolidWorks (Part D).">
+                  <figcaption>Horizontal velocity - video tracking vs. SolidWorks.</figcaption>
+                </figure>
+
+                <figure class="chart narrow">
+                  <img loading="lazy" src="assets/Mechanics/ME21_Mechanism/ME21_Mechanism_TracePath.png" alt="Two stacked plots of the tracked point's path: a jagged closed loop from video tracking (Part C) above a smooth tilted ellipse from SolidWorks (Part D).">
+                  <figcaption>Trace path - video tracking vs. SolidWorks.</figcaption>
+                </figure>
+
+                <p>The tracker data was much noisier, because the camera was zoomed out and the tracker drew lines between slightly different points each frame. It also missed part of the bottom half of the path, leaving a small gap where SolidWorks gives an ideal, connected oval. Even so, both followed the same general motion.</p>
+
+                <p class="report-links">Reports: <a href="assets/Mechanics/ME21_Mechanism/ME21_Mechanism_PartC.pdf" target="_blank" rel="noopener">Part C</a> · <a href="assets/Mechanics/ME21_Mechanism/ME21_Mechanism_PartD.pdf" target="_blank" rel="noopener">Part D</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">Rigid-body kinematics</span>
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">SolidWorks Motion</span>
+                  <span class="tag">Video tracking</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Project 2 - Human Body Gait Analysis</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p class="experiment-label">WITH AIDAN HOIDAL-BUI &amp; BREOGHAN CONCHAS MARQUEZ</p>
+                <p>Understanding the forces and moments at the joints during walking is a first step toward designing prostheses. Using motion-capture, force-plate, and anthropometric data from a walking subject, we calculated the reaction forces and moments at the ankle, knee, and hip through one stance phase.</p>
+
+                <p>We modeled the leg as three rigid segments - foot, shank, and thigh - and wrote Newton-Euler equations for each. Starting from the ground reaction force at the foot, we solved the ankle's reactions first and carried them up the leg to the knee and then the hip, since each joint's result feeds the next.</p>
+
+                <figure class="chart slim">
+                  <img loading="lazy" src="assets/Mechanics/ME21_HumanBody/ME21_HumanBody_FBD.png" alt="Hand-drawn free-body diagrams of the foot, shank, and thigh, with joint reaction forces and moments at the ankle, knee, and hip.">
+                  <figcaption>Free-body diagrams of the foot, shank, and thigh.</figcaption>
+                </figure>
+
+                <div class="eq-block">ΣF_x = m·a_Gx &nbsp;&nbsp; ΣF_z = m·a_Gz &nbsp;&nbsp; ΣM_G = I_G·α</div>
+
+                <p>After solving a single frame by hand, we automated the calculation in MATLAB to get the joint loads over the full 0.8&nbsp;s stance.</p>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Mechanics/ME21_HumanBody/ME21_HumanBody_ForcesZ.png" alt="Three plots of vertical joint reaction force over time for the ankle, knee, and hip, each dipping twice during stance, to about -690 N at the ankle, -650 N at the knee, and -540 N at the hip, and returning to zero.">
+                  <figcaption>Vertical (z) joint reaction forces over the stance phase.</figcaption>
+                </figure>
+
+                <p>The ankle carried the largest vertical load, since it supports the shank, thigh, and the rest of the body above it. The loads peaked around terminal stance, when the heel lifts, the center of pressure shifts to the front of the foot, and one leg holds the whole body while the other swings forward. The horizontal forces were positive as the body moved forward, then turned negative as the leg pushed off.</p>
+
+                <div class="photo-grid two">
+                  <figure>
+                    <img loading="lazy" src="assets/Mechanics/ME21_HumanBody/ME21_HumanBody_ForcesX.png" alt="Three plots of horizontal joint reaction force over time for the ankle, knee, and hip.">
+                    <figcaption>Horizontal (x) joint reaction forces</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Mechanics/ME21_HumanBody/ME21_HumanBody_Moments.png" alt="Three plots of joint moment over time: the ankle moment falling to about -90 N·m, the knee swinging between about 15 and -20 N·m, and the hip rising to about 30 N·m.">
+                    <figcaption>Joint moments</figcaption>
+                  </figure>
+                </div>
+
+                <p>With counterclockwise taken as positive (extension), the ankle moment turned strongly negative as the stance went on, while the hip moment stayed mostly positive and smaller, since the hip doesn't carry the body's weight the way the ankle does. The knee moment swung from positive to negative and back, tracing the leg's extension, bending, and re-extension through the step.</p>
+
+                <p class="report-links">Reports: <a href="assets/Mechanics/ME21_HumanBody/ME21_HumanBody_PartA.pdf" target="_blank" rel="noopener">Part A</a> · <a href="assets/Mechanics/ME21_HumanBody/ME21_HumanBody_PartB.pdf" target="_blank" rel="noopener">Part B</a> · <a href="assets/Mechanics/ME21_HumanBody/ME21_HumanBody_PartC.pdf" target="_blank" rel="noopener">Part C</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">Newton-Euler equations</span>
+                  <span class="tag">Biomechanics</span>
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">Motion capture</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </details>
     </div>
   </section>
 
@@ -1555,7 +1831,7 @@
         <a href="https://linkedin.com/in/rls27" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/Raphael-Lemus" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <p class="foot-note">Raphael Lemus Solis - Medford, MA</p>
+      <p class="foot-note">Raphael Lemus Solis - Everett, MA</p>
     </div>
   </footer>
 

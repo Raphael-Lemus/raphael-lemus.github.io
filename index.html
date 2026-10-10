@@ -807,27 +807,31 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr><td>Lemon oil</td><td class="num">0.840</td><td class="num">0.840</td><td class="num">0%</td></tr>
-                    <tr><td>Corn oil</td><td class="num">0.925</td><td class="num">0.922</td><td class="num">0.33%</td></tr>
                     <tr><td>Olive oil</td><td class="num">0.948</td><td class="num">0.920</td><td class="num">3.04%</td></tr>
+                    <tr><td>Corn oil</td><td class="num">0.925</td><td class="num">0.922</td><td class="num">0.33%</td></tr>
+                    <tr><td>Lemon oil</td><td class="num">0.840</td><td class="num">0.840</td><td class="num">0%</td></tr>
                     <tr><td>Gatorade</td><td class="num">1.02</td><td class="num">1.03</td><td class="num">-0.97%</td></tr>
+                    <tr><td>Soy sauce</td><td class="num">1.06</td><td class="num">1.08</td><td class="num">-1.85%</td></tr>
+                    <tr><td>Orange juice</td><td class="num">0.99</td><td class="num">1.05</td><td class="num error-note">-5.71%</td></tr>
                     <tr><td>Milk</td><td class="num">0.989</td><td class="num">1.02</td><td class="num error-note">-3.04%</td></tr>
                     <tr><td>Hot sauce</td><td class="num">1.01</td><td class="num">1.04</td><td class="num error-note">-2.88%</td></tr>
-                    <tr><td>Soy sauce</td><td class="num">1.06</td><td class="num">1.08</td><td class="num error-note">-1.85%</td></tr>
-                    <tr><td>Orange juice</td><td class="num">0.99</td><td class="num">1.05</td><td class="num error-note">-5.71%</td></tr>
                   </tbody>
                 </table>
 
-                <p>Most results landed within a few percent of published densities. The largest misses - orange juice, milk, and hot sauce - came from liquids that wouldn't settle cleanly against the meniscus, whether from opacity, suspended particles, or surface tension. We also cross-checked the setup in COMSOL, modeling the force each liquid would exert on a 1&nbsp;m tank wall with F&nbsp;=&nbsp;ρgh/2, and landed within 3% of the analytical result.</p>
+                <p>Most results landed within a few percent of published densities. The largest misses - orange juice, milk, and hot sauce - came from liquids that wouldn't settle cleanly against the meniscus, whether from opacity, suspended particles, or surface tension. Camera angle and temperature also played a part: some liquids came straight from the fridge while others sat at room temperature.</p>
+
+                <p>We then modeled a 1&nbsp;m box of each liquid in COMSOL. Since the fluids are static, density is the only thing that changes the pressure on the wall - so the denser the liquid, the steeper the line.</p>
 
                 <figure class="chart">
-                  <img src="assets/force-vs-liquid.png" alt="Bar chart of force in newtons on the tank wall for five liquids: olive oil, corn oil, lemon oil, Gatorade, and soy sauce.">
-                  <figcaption>COMSOL-derived force on a 1 m tank wall, by liquid.</figcaption>
+                  <img src="assets/ThermalL1/pressure-vs-arclength.png" alt="COMSOL line graph of pressure in pascals versus arc length in meters for five liquids: soy sauce rises steepest, then Gatorade, then olive and corn oil overlapping, with lemon oil lowest.">
+                  <figcaption>Pressure along the box wall, by liquid. Corn and olive oil overlap, so only four lines are visible.</figcaption>
                 </figure>
 
+                <p>From our measured densities, we calculated the force on the wall with F&nbsp;=&nbsp;ρgh/2 (h&nbsp;=&nbsp;1&nbsp;m, the height of the COMSOL box), with about a 3% error.</p>
+
                 <figure class="chart">
-                  <img src="assets/pressure-vs-arclength.png" alt="Line graph of pressure in pascals versus arc length in meters for five liquids, showing soy sauce and Gatorade with the highest pressure gradient and lemon oil the lowest.">
-                  <figcaption>Pressure vs. arc length along the tank wall, by liquid.</figcaption>
+                  <img src="assets/ThermalL1/force-vs-liquid.png" alt="Bar chart of force in newtons on the wall for five liquids: olive oil, corn oil, lemon oil, Gatorade, and soy sauce, with soy sauce highest and lemon oil lowest.">
+                  <figcaption>Force on a 1 m wall, by liquid, from the measured densities.</figcaption>
                 </figure>
 
                 <div class="tag-row">
@@ -850,32 +854,34 @@
                 <p>This lab reused the manometer tube from Lab 1, but instead of leaving it open, I sealed one end with a strip of tape and measured how tall a column of water the tape's adhesive could hold before letting go — then converted that height into a hydrostatic force. Height was read the same way as before: a ruler in frame gave a pixel-to-cm calibration, and MATLAB converted a click-to-click pixel distance into a real measurement.</p>
 
                 <figure class="chart">
-                  <img src="assets/lab2-setup.jpg" alt="Photo of the manometer tube taped to a cabinet with a measuring tape running alongside it for pixel-to-cm calibration.">
+                  <img src="assets/MTN1/MTN1_Setup.jpg" alt="Photo of the manometer tube taped to a cabinet with a measuring tape running alongside it for pixel-to-cm calibration.">
                   <figcaption>Experimental setup — tube sealed with tape, ruler alongside for calibration.</figcaption>
                 </figure>
 
-                <p>I ran three trials with scotch tape and one with duct tape, to see whether the type of tape — and how sticky it was — changed the result.</p>
+                <p>I assumed water density of 1000&nbsp;kg/m³, g&nbsp;=&nbsp;9.81&nbsp;m/s², that the tape did not peel off, and used the tube's inner diameter. I ran three trials with scotch tape to check that the result stayed consistent, plus one with duct tape to see whether the stickiness of the tape mattered.</p>
 
                 <div class="photo-grid">
                   <figure>
-                    <img src="assets/lab2-test1.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 1, showing a distance of 231.1 pixels.">
+                    <img src="assets/MTN1/MTN1_Trial1.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 1, showing a distance of 231.1 pixels.">
                     <figcaption>Scotch tape — Test 1</figcaption>
                   </figure>
                   <figure>
-                    <img src="assets/lab2-test2.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 2, showing a distance of 378.0 pixels.">
+                    <img src="assets/MTN1/MTN1_Trial2.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 2, showing a distance of 378.0 pixels.">
                     <figcaption>Scotch tape — Test 2</figcaption>
                   </figure>
                   <figure>
-                    <img src="assets/lab2-test3.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 3, showing a distance of 397.0 pixels.">
+                    <img src="assets/MTN1/MTN1_Trial3.png" alt="MATLAB pixel-measurement screenshot for scotch tape trial 3, showing a distance of 397.0 pixels.">
                     <figcaption>Scotch tape — Test 3</figcaption>
                   </figure>
                 </div>
 
                 <div class="eq-block">p = ρgh &nbsp;→&nbsp; F = pA &nbsp;(tube I.D. 6.11 mm, A = 2.92×10⁻⁵ m²)</div>
 
+                <p>The duct tape trial used the same process and equations.</p>
+
                 <figure class="chart">
-                  <img src="assets/lab2-duct-tape.png" alt="MATLAB pixel-measurement screenshot for the duct tape trial, showing a distance of 509.6 pixels.">
-                  <figcaption>Duct tape trial.</figcaption>
+                  <img src="assets/MTN1/MTN1_DuctTape.png" alt="MATLAB pixel-measurement screenshot for the duct tape trial, measuring 509.6 pixels across 10 cm of the ruler and 246.0 pixels for the water column.">
+                  <figcaption>Duct tape trial — ruler calibration and water column height.</figcaption>
                 </figure>
 
                 <table class="data-table">
@@ -896,14 +902,16 @@
                   </tbody>
                 </table>
 
-                <p>For the COMSOL side of this one, a classmate, Ryan, helped me work through setting up the parameter sweep. The resulting force-vs-water-height curve came out linear, and the calculated 0.018&nbsp;N for scotch tape lines up closely with the swept range — though COMSOL treats the sealed end as a rigid body, so it doesn't account for the tape's adhesion itself.</p>
+                <p>For COMSOL, I modeled the scotch tape case and swept the water height over an arbitrary range. As the water rises, pressure increases, so the force on the tape grows linearly. The difference between the maximum and minimum force across the sweep is about 0.018&nbsp;N, matching the calculated force. COMSOL treats the sealed end as a rigid body, though, so it doesn't account for the tape's adhesion itself. COMSOL took a while to learn, and my classmate Ryan was a huge help answering my questions.</p>
 
                 <figure class="chart">
-                  <img src="assets/lab2-comsol-force-height.png" alt="COMSOL line graph of force in newtons versus water height in meters, showing a linear increase from about 0.286 N to 0.305 N.">
+                  <img src="assets/MTN1/MTN1_COMSOL.png" alt="COMSOL line graph of force in newtons versus water height in meters, showing a linear increase from about 0.286 N to 0.305 N.">
                   <figcaption>COMSOL parameter sweep — force vs. water height.</figcaption>
                 </figure>
 
-                <p>Results were noisier than Lab 1's — pixel-to-cm conversion was harder to pin down, camera angle could tilt between shots, and a couple of untested trials likely leaked water through small gaps in the tape. Even so, the pattern held: the three scotch-tape trials averaged a 6.41&nbsp;cm column (0.018&nbsp;N), duct tape held only 5.02&nbsp;cm (0.014&nbsp;N) — about a 22% difference. The takeaway was that adhesive type didn't change the underlying hydrostatic pressure, just how much of it each tape could actually hold back.</p>
+                <p>The results were unexpected. Pixel-to-cm conversion was hard to pin down, the camera angle could tilt between shots and make the water level look higher or lower, and in a few trials I didn't record, a small hole in the tape let water leak through. Next time, better camera-angle calibration would cut parallax error, and automating the height measurement would remove the human error of clicking two points by hand.</p>
+
+                <p>Even so, the pattern held: the three scotch-tape trials averaged a 6.41&nbsp;cm column (0.018&nbsp;N), while duct tape held only 5.02&nbsp;cm (0.014&nbsp;N) — about a 22% difference. Adhesive type didn't change the underlying hydrostatic pressure, just how much of it each tape could hold back. It was surprising that duct tape did worse, given its reputation, which may come down to how each adhesive handles contact with water. Both forces were very small and well below typical adhesive strengths for either tape.</p>
 
                 <div class="tag-row">
                   <span class="tag">MATLAB</span>

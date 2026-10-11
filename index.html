@@ -784,9 +784,9 @@
       <div class="project">
         <div class="project-date">NOV-DEC 2024</div>
         <div>
-          <h3 class="project-title">Sundial Coat Hanger</h3>
+          <h3 class="project-title">Sundial Plant Hanger</h3>
           <p class="project-course">Materials &amp; Manufacturing I</p>
-          <p class="project-desc">Fabricated a working sundial coat hanger using sand-casting, then built an FEA model to find the material's maximum tensile strength - carrying the project from concept to finished prototype inside a one-month deadline.</p>
+          <p class="project-desc">Fabricated a working sundial that doubles as a plant hook, sand-casting its pewter parts, then built an FEA model to check how much weight the hook could hold - carrying the project from concept to finished prototype inside a one-month deadline.</p>
           <div class="tag-row">
             <span class="tag">Sand casting</span>
             <span class="tag">FEA</span>
@@ -794,6 +794,211 @@
           </div>
         </div>
       </div>
+
+      <details class="course-dropdown">
+        <summary class="course-summary">
+          <span>ME10 - Materials &amp; Manufacturing I</span>
+          <span class="chevron">▶</span>
+        </summary>
+        <div class="course-body">
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Final Project - Sundial Plant Hanger</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p class="experiment-label">WITH BREOGHAN CONCHAS MARQUEZ, IRIS GUZMAN DE LEON &amp; AMANDA MOORE-RINEHART</p>
+                <p>Our team built a vertical sundial - a timekeeping device that reads the time from the shadow of a gnomon. Because it hangs on a wall, we made the gnomon double as a hook to hold a plant. The goals were to learn to sand-cast without too many defects, and to model the parts in SolidWorks and run FEA to see how much weight the design could hold.</p>
+
+                <figure class="chart narrow">
+                  <img loading="lazy" src="assets/Materials_Manufacturing/ME10_Sundial/ME10_Sundial_Final.jpg" alt="The finished sundial plant hanger: a brushed-aluminum dial marked A.M. and P.M. with hours 6 to 11 and 1 to 6, a cast pewter star-shaped sun, and a pewter hook acting as the gnomon, on a white acrylic backing.">
+                  <figcaption>The finished sundial plant hanger.</figcaption>
+                </figure>
+
+                <p>We cast the hook and sun in pewter, which we thought would be durable enough to hold a plant. The dial was aluminum cut on the waterjet so the gnomon's shadow would read clearly, mounted on acrylic for looks. After a cardboard prototype to place the gnomon, we went through several 3D-printed casting patterns. The first didn't print how we wanted, the second needed a different shape, and the third's sun design would have caused errors in the mold. The hook was larger than the shop's mold, so we split it in half, cast it in two molds, and joined the pieces. Every part was cleaned up with a Dremel, and we drilled and tapped the acrylic to hold the screws.</p>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Materials_Manufacturing/ME10_Sundial/ME10_Sundial_SandCasting.jpg" alt="Left: blue and purple 3D-printed hook patterns on sand-dusted paper. Right: shaping a pattern cavity in red casting sand inside wooden mold flasks.">
+                  <figcaption>3D-printed patterns and sand molds.</figcaption>
+                </figure>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Materials_Manufacturing/ME10_Sundial/ME10_Sundial_CastParts.jpg" alt="Three photos of the finished parts: the sand-cast pewter hook with mounting pads, the cast six-pointed pewter star, and the waterjet-cut aluminum hour dial on white acrylic.">
+                  <figcaption>Cast pewter hook and sun, and the waterjet-cut dial.</figcaption>
+                </figure>
+
+                <p>Since pewter is known to be brittle, we checked the hook in FEA. Under a 45&nbsp;N load (about 10&nbsp;lb), it moved only 0.402&nbsp;mm, and the design can hold 13.97&nbsp;kg (about 30.79&nbsp;lb) - so a 10&nbsp;lb flower pot is doable as long as nothing extra is hung on it.</p>
+
+                <figure class="chart narrow">
+                  <img loading="lazy" src="assets/Materials_Manufacturing/ME10_Sundial/ME10_Sundial_FEA_Displacement.png" alt="SolidWorks FEA of the pewter hook under a 45 N downward load, with fixed wall-mount pads and a displacement color bar reaching a maximum of 0.402 mm.">
+                  <figcaption>FEA of the hook under 45 N - maximum displacement 0.402 mm.</figcaption>
+                </figure>
+
+                <p>The hardest part was learning to sand-cast a cylindrical piece, and casting the hook correctly took weeks. The design's main limitation is that it only reads correctly on a south-facing wall. If we did it again, we'd find a way for the gnomon to adjust to whichever wall it hangs on.</p>
+
+                <p class="report-links">Full report: <a href="assets/Materials_Manufacturing/ME10_Sundial/ME10_Sundial_Report.pdf" target="_blank" rel="noopener">PDF</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">Sand casting</span>
+                  <span class="tag">3D printing</span>
+                  <span class="tag">Waterjet cutting</span>
+                  <span class="tag">SolidWorks</span>
+                  <span class="tag">FEA</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Lab - Modeling a Pull-Up Bar in FEA</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>This lab modeled a loaded pull-up bar in FEA and compared three setups: the full bar, a half bar using symmetry, and a version with holes. Reading results along the bar's length, the full bar peaked at a tensile normal stress of 88.5&nbsp;MPa and a deflection of 0.88&nbsp;mm, both at the midpoint.</p>
+
+                <div class="photo-grid two">
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_PullUpBar/ME10_PullUpBar_FEA_Stress.png" alt="FEA plot of normal stress along the pull-up bar, peaking at about 88.5 MPa at the midpoint and falling to about -100 MPa at the ends.">
+                    <figcaption>Normal stress along the bar</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_PullUpBar/ME10_PullUpBar_FEA_Displacement.png" alt="FEA plot of vertical displacement along the pull-up bar, a symmetric sag reaching about -0.88 mm at the midpoint.">
+                    <figcaption>Vertical displacement along the bar</figcaption>
+                  </figure>
+                </div>
+
+                <p>The half-bar model gave the same results (88.5&nbsp;MPa and 0.885&nbsp;mm), showing that the symmetry method makes a half bar behave like the full one - only the location of the peak along the parametric distance changes. Adding holes nearly doubled both values, to 143.1&nbsp;MPa and 1.72&nbsp;mm. I suspected that came from how I modeled the holes rather than real behavior, since the values should have stayed about the same.</p>
+
+                <p>These FEA results later became the benchmark for my ME20 statics final project, where I solved the same beam by hand.</p>
+
+                <p class="report-links">Full lab: <a href="assets/Materials_Manufacturing/ME10_PullUpBar/ME10_PullUpBar_Report.pdf" target="_blank" rel="noopener">PDF</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">FEA</span>
+                  <span class="tag">SolidWorks Simulation</span>
+                  <span class="tag">Symmetry modeling</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>SolidWorks CAD Models</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p>Part and assembly models built in SolidWorks over the course: a lever-arm citrus juicer, a machined support base, and a LEGO brick.</p>
+
+                <p class="experiment-label">LEVER-ARM JUICER</p>
+                <div class="photo-grid">
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_Juice_Iso.jpg" alt="Isometric CAD render of a lever-arm citrus juicer with a U-shaped base, vertical post, raised handle, linkage, conical press cup, and reamer bowl.">
+                    <figcaption>Isometric view</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_Juice_Side.jpg" alt="Side-view CAD render of the juicer showing the angled lever handle, three pinned linkage joints, and the conical presser above the ribbed reamer bowl.">
+                    <figcaption>Side view - lever linkage</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_Juice_Detail.jpg" alt="Close-up CAD render of the conical press head above a stepped reamer cone inside a transparent bowl with a slotted strainer and spout.">
+                    <figcaption>Press head and reamer bowl</figcaption>
+                  </figure>
+                </div>
+
+                <p class="experiment-label">SUPPORT BASE</p>
+                <div class="photo-grid">
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_SupportBase_Iso.jpg" alt="Isometric CAD render of a gray machined support bracket with a base plate and counterbored hole, an angled rib, and an upright block with a side lug.">
+                    <figcaption>Isometric view</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_SupportBase_Top.jpg" alt="Top-down CAD render of the support bracket showing the counterbored base hole, the angled face with a countersunk hole, and the side lug hole.">
+                    <figcaption>Top view</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_SupportBase_Front.jpg" alt="Front-view CAD render of the support bracket showing the upright with a countersunk hole, a rounded lug with a through-hole, and the base plate.">
+                    <figcaption>Front view</figcaption>
+                  </figure>
+                </div>
+
+                <p class="experiment-label">LEGO BRICK</p>
+                <div class="photo-grid">
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_LEGO_Top.png" alt="Isometric CAD render of a gray 2-by-4 LEGO brick with eight studs on top.">
+                    <figcaption>2×4 brick - top</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_LEGO_Underside.png" alt="CAD view of the LEGO brick's underside along its long side, showing three hollow tubes and internal ribs.">
+                    <figcaption>Underside - tubes and ribs</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Materials_Manufacturing/ME10_CAD/ME10_LEGO_Underside2.png" alt="Angled CAD render of the hollow underside of the LEGO brick, showing three cylindrical tubes, ribs, and the inner wall.">
+                    <figcaption>Underside - angled</figcaption>
+                  </figure>
+                </div>
+
+                <p class="report-links">Model sheets: <a href="assets/Materials_Manufacturing/ME10_CAD/ME10_Juice.pdf" target="_blank" rel="noopener">Juicer</a> · <a href="assets/Materials_Manufacturing/ME10_CAD/ME10_SupportBase.pdf" target="_blank" rel="noopener">Support base</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">SolidWorks</span>
+                  <span class="tag">Part modeling</span>
+                  <span class="tag">Assemblies</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </details>
+
+      <details class="course-dropdown">
+        <summary class="course-summary">
+          <span>ME11 - Materials &amp; Manufacturing II</span>
+          <span class="chevron">▶</span>
+        </summary>
+        <div class="course-body">
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Paper - Ti-6Al-4V in Hip Replacements</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p class="experiment-label">WITH FLORY L. MENDEZ MERIDA</p>
+                <p>Flory and I wrote an IEEE-format paper tracing the full cradle-to-grave lifecycle of Ti-6Al-4V (Grade 5 titanium), one of the most widely used alloys for hip replacement implants.</p>
+
+                <p><strong>Production.</strong> Titanium comes from ilmenite and rutile ores, mined mainly in Australia, South Africa, and Canada. The Kroll process converts it to TiCl₄ and reduces it with magnesium under argon. It is then alloyed with 5.5-6.75 wt% aluminum and 3.5-4.5 wt% vanadium, with tight limits on oxygen, nitrogen, carbon, and hydrogen, and vacuum-arc remelted multiple times. It is hot-worked in the α + β region below the 995&nbsp;°C β-transus.</p>
+
+                <p><strong>Manufacturing.</strong> Femoral stems are typically forged, then CNC machined. Their surfaces are grit-blasted or acid-etched and plasma-sprayed with hydroxyapatite to bond with bone, and the parts are sterilized with gamma irradiation or ethylene oxide.</p>
+
+                <div class="eq-block">σ_y = σ₀ + k·d^(-1/2) &nbsp;&nbsp; Ti α (HCP) → 882 °C → Ti β (BCC)</div>
+
+                <p><strong>Why it works.</strong> The alloy's strength comes from solid-solution, grain-boundary (Hall-Petch), and dislocation strengthening, plus the interfaces between its HCP α and BCC β phases. In service, an implant sees cyclic stresses of 100-400&nbsp;MPa for 15 to 25 years or more.</p>
+
+                <p><strong>Challenges.</strong> The paper covers the main failure mechanisms - fatigue, fretting corrosion at modular junctions, and stress shielding, since Ti-6Al-4V is stiffer than natural bone. It also covers the environmental and health costs: the Kroll process needs about 36&nbsp;MJ/kg versus about 20&nbsp;MJ/kg for steel, and vanadium is cytotoxic at elevated concentrations, motivating alternatives like Ti-6Al-7Nb. At end of life, implants are classified as biohazardous medical waste and typically incinerated rather than recycled.</p>
+
+                <p class="report-links">Full paper: <a href="assets/Materials_Manufacturing/ME11_HipReplacement/ME11_HipReplacement_Paper.pdf" target="_blank" rel="noopener">PDF</a></p>
+
+                <div class="tag-row">
+                  <span class="tag">Titanium alloys</span>
+                  <span class="tag">Biomaterials</span>
+                  <span class="tag">Strengthening mechanisms</span>
+                  <span class="tag">Lifecycle analysis</span>
+                  <span class="tag">Technical writing</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </details>
 
       <details class="course-dropdown">
         <summary class="course-summary">

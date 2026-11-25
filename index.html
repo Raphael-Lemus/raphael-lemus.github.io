@@ -496,6 +496,48 @@
   }
   .project + details.course-dropdown{ margin-top: 28px; }
   details.course-dropdown + details.course-dropdown{ margin-top: 16px; }
+  .audio-grid{
+    display: grid;
+    grid-template-columns: auto repeat(3, minmax(0, 1fr));
+    gap: 10px 12px;
+    align-items: center;
+    margin: 0 0 20px;
+  }
+  .audio-cell{ min-width: 0; }
+  .audio-grid audio{ display: block; width: 100%; min-width: 0; height: 36px; }
+  .audio-head{
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .audio-label{
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--blue);
+    white-space: nowrap;
+  }
+  @media (max-width: 760px){
+    .audio-grid{ grid-template-columns: 1fr; gap: 6px; }
+    .audio-grid .audio-head{ display: none; }
+    .audio-grid .audio-label{ margin-top: 10px; }
+    .audio-cell::before{
+      content: attr(data-k);
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+  }
+  .version-list{
+    margin: 0 0 16px;
+    padding-left: 20px;
+    font-size: 15.5px;
+    max-width: 68ch;
+  }
+  .version-list li{ margin-bottom: 8px; }
   .lab-body video{
     display: block;
     width: 100%;
@@ -1242,6 +1284,243 @@
                   <span class="tag">Biomechanics</span>
                   <span class="tag">MATLAB</span>
                   <span class="tag">Motion capture</span>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </details>
+
+      <details class="course-dropdown">
+        <summary class="course-summary">
+          <span>ME127 - Architectural Acoustics</span>
+          <span class="chevron">▶</span>
+        </summary>
+        <div class="course-body">
+
+          <details class="lab-dropdown">
+            <summary class="lab-summary">
+              <span>Group Project - Sophia Gordon Multipurpose Room</span>
+              <span class="chevron">▶</span>
+            </summary>
+            <div class="lab-body">
+              <div class="experiment">
+                <p class="experiment-label">GROUP PROJECT</p>
+                <p>My group characterized the acoustics of the Sophia Gordon Multipurpose Room at Tufts. We combined listening tests, balloon-pop impulse-response measurements, a Sabine reverberation-time calculation, and a CATT-Acoustic model, then used auralizations to hear how design changes could make the room work for more kinds of events.</p>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_Cover.jpg" alt="Wide view of the Sophia Gordon multipurpose room: wood floor, dark acoustic-tile ceiling with stage lights, a glass-railed balcony lounge, and a staircase rising to the right.">
+                  <figcaption>The Sophia Gordon Multipurpose Room.</figcaption>
+                </figure>
+
+                <p><strong>The room.</strong> It's a rectangular space with a balcony, a curved back wall, wall recesses, and movable furniture. It holds about 80 seated or 150 standing, and it's mostly used for dance rehearsals, club events, classes, and occasional small performances. Its surfaces mix reflective materials - a bamboo hardwood floor, drywall, large glass panels, a steel sliding door - with absorptive ones like fabric ceiling panels, acoustic wall panels, carpet, and sofas.</p>
+
+                <div class="photo-grid">
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_FrontWall.jpg" alt="The front wall: light fabric panels over a dark paneled band with two wall speakers, a rolling whiteboard, a wooden lectern, and tall windows at right.">
+                    <figcaption>Front wall</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_BackWall.jpg" alt="The back wall: a gray lower wall with an exit door and large gray sliding partition, under a glass-railed balcony lounge with an orange sofa.">
+                    <figcaption>Back wall</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_LeftWall.jpg" alt="The left wall: a glass-railed staircase climbing diagonally across gray and dark-paneled walls toward the balcony, with a blackboard and door below.">
+                    <figcaption>Left wall</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_RightWall.jpg" alt="The right wall: a tall two-story window between dark fabric-covered wall panels, with stage lights on the ceiling.">
+                    <figcaption>Right wall</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_Ceiling.jpg" alt="The dark suspended acoustic-tile ceiling, with a grid of fluorescent light strips, round air diffusers, and a truss of stage lights.">
+                    <figcaption>Ceiling</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_Balcony.jpg" alt="The carpeted balcony with tall round tables and bar stools along floor-to-ceiling windows, a glass guardrail, and a lounge with orange sofas.">
+                    <figcaption>Balcony</figcaption>
+                  </figure>
+                </div>
+
+                <p>We sketched and dimensioned every surface to get the areas for the reverberation calculation.</p>
+
+                <div class="photo-grid two">
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_SketchMain.png" alt="Hand-drawn dimensioned sketches of the main room's front, right, left, and back walls and floor, with calculated areas such as a 1240.376 square-foot floor.">
+                    <figcaption>Main room surfaces</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_SketchBalcony.png" alt="Hand-drawn dimensioned sketches of the balcony floor and walls and the ceiling, with a 1769.44 square-foot ceiling area.">
+                    <figcaption>Balcony and ceiling</figcaption>
+                  </figure>
+                </div>
+
+                <p><strong>Listening tests.</strong> With a fixed source at the front of the room, one of us spoke at a normal conversational volume and then played the same three ukulele notes on repeat while the others moved around the floor, the recesses, and the balcony. Speech was clear and easy to localize from almost everywhere, with only slightly more reverberation in the recesses. Music sounded bright, warm, and distinct, with only slight reverberant support. We also noticed flutter echoes near parallel walls, and that sound leaked in from the hallway.</p>
+
+                <p><strong>Impulse response.</strong> We popped balloons at the source and recorded with a UMM-6 omnidirectional microphone at a ground-floor receiver, 16&nbsp;ft away, and a balcony receiver, 35&nbsp;ft away. Then we used MATLAB to filter the recordings into octave bands, build Schroeder decay curves, and calculate EDT, T20, and T30.</p>
+
+                <figure class="chart">
+                  <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_SourceReceiver.jpg" alt="Wide photo of the room marked with pink X's for the source on the floor near the whiteboard, a receiver at the center of the floor, and a receiver on the balcony.">
+                  <figcaption>Source and receiver positions.</figcaption>
+                </figure>
+
+                <div class="photo-grid two">
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_Receiver1.jpg" alt="A small tripod microphone and a laptop on the empty wood floor in the middle of the room, facing the back wall.">
+                    <figcaption>Ground-floor receiver</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_Receiver2.jpg" alt="A measurement microphone on a tripod on a balcony table, looking down past the guardrail toward the source mark near the front wall.">
+                    <figcaption>Balcony receiver</figcaption>
+                  </figure>
+                </div>
+
+                <figure class="chart narrow">
+                  <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_Decay500_T1.png" alt="MATLAB plot of sound energy decay at 500 Hz for trial 1: a noisy blue energy curve and an orange Schroeder curve falling roughly linearly to about -50 dB by 0.6 seconds.">
+                  <figcaption>Schroeder energy decay at 500 Hz (Trial 1).</figcaption>
+                </figure>
+
+                <div class="photo-grid">
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_RT_T1.png" alt="MATLAB plot of EDT, T20, and T30 by octave band for trial 1, with T20 falling from about 0.9 s at 125 Hz to 0.6 s at 4 kHz and T30 spiking near 1.4 s at 125 Hz.">
+                    <figcaption>Trial 1 - large balloon, floor</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_RT_T2.png" alt="MATLAB plot of EDT, T20, and T30 by octave band for trial 2, with a nearly flat T20 around 0.7 s.">
+                    <figcaption>Trial 2 - small balloon, floor</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_RT_T3.png" alt="MATLAB plot of EDT, T20, and T30 by octave band for the balcony trial, with T20 falling from about 0.9 s to 0.6 s and T30 spiking near 1.7 s at 125 Hz.">
+                    <figcaption>Trial 3 - small balloon, balcony</figcaption>
+                  </figure>
+                </div>
+
+                <p>EDT, T20, and T30 agreed across most bands. The exception was T30 at 125&nbsp;Hz, which jumped up - likely because the signal hit the noise floor before decaying a full 30&nbsp;dB. So we used T20, which stayed consistent, and averaged the three trials.</p>
+
+                <table class="data-table">
+                  <caption>Measured T20 by octave band (seconds)</caption>
+                  <thead><tr><th>Band (Hz)</th><th class="num">Trial 1</th><th class="num">Trial 2</th><th class="num">Trial 3</th><th class="num">Average</th></tr></thead>
+                  <tbody>
+                    <tr><td>125</td><td class="num">0.9</td><td class="num">0.7</td><td class="num">0.9</td><td class="num">0.83</td></tr>
+                    <tr><td>250</td><td class="num">0.8</td><td class="num">0.7</td><td class="num">0.8</td><td class="num">0.77</td></tr>
+                    <tr><td>500</td><td class="num">0.7</td><td class="num">0.7</td><td class="num">0.7</td><td class="num">0.70</td></tr>
+                    <tr><td>1000</td><td class="num">0.8</td><td class="num">0.7</td><td class="num">0.8</td><td class="num">0.77</td></tr>
+                    <tr><td>2000</td><td class="num">0.7</td><td class="num">0.7</td><td class="num">0.7</td><td class="num">0.70</td></tr>
+                    <tr><td>4000</td><td class="num">0.6</td><td class="num">0.6</td><td class="num">0.6</td><td class="num">0.60</td></tr>
+                  </tbody>
+                </table>
+
+                <p><strong>Sabine calculation.</strong> Multiplying each of the 12 surfaces' area by its published absorption coefficient gave the room's total absorption in each band - from about 1440&nbsp;sabins at 125&nbsp;Hz to 2126 at 4&nbsp;kHz, dominated by the 1504&nbsp;ft² of fabric ceiling panels. The Sabine equation then gave a predicted reverberation time that landed within 10% of the measured decay.</p>
+
+                <div class="eq-block">RT = 0.049·V / ΣSα</div>
+
+                <table class="data-table">
+                  <caption>Reverberation time - measured vs. Sabine (seconds)</caption>
+                  <thead><tr><th>Band (Hz)</th><th class="num">Measured T20</th><th class="num">Sabine RT</th></tr></thead>
+                  <tbody>
+                    <tr><td>125</td><td class="num">0.83</td><td class="num">0.89</td></tr>
+                    <tr><td>250</td><td class="num">0.77</td><td class="num">0.80</td></tr>
+                    <tr><td>500</td><td class="num">0.70</td><td class="num">0.71</td></tr>
+                    <tr><td>1000</td><td class="num">0.77</td><td class="num">0.71</td></tr>
+                    <tr><td>2000</td><td class="num">0.70</td><td class="num">0.68</td></tr>
+                    <tr><td>4000</td><td class="num">0.60</td><td class="num">0.60</td></tr>
+                  </tbody>
+                </table>
+
+                <p>The measurements matched what we heard. A reverberation time near 0.7&nbsp;s at mid frequencies suits speech, which is why words stayed clear. The same moderate decay gave music only a little support, not the blending a larger ensemble would want. EDT ran slightly below T20, matching how clear and direct the room felt. Reverberation time alone couldn't capture the flutter echoes we heard, though. We concluded the room fits a small group of about 5-8 performers with an audience of 50-80.</p>
+
+                <p><strong>Recommendations.</strong> Sealing the sliding door would cut the hallway noise. For busy, talk-heavy events, folded velour curtains over the windows would drop the 500&nbsp;Hz reverberation time from 0.71 to 0.58&nbsp;s. For music, swapping half the absorptive ceiling tiles for reflective ones would raise it to 0.94&nbsp;s for more blend.</p>
+
+                <p><strong>CATT-Acoustic model and auralization.</strong> We built the room - floor, balcony, staircase, ceiling, and walls - in CATT-Acoustic, assigned each surface an absorption coefficient, and placed the source at the front with a receiver 16&nbsp;ft away. The simulated T20 tracked the measured values closely.</p>
+
+                <div class="photo-grid two">
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_CATTModel.png" alt="3D CATT-Acoustic model of the room with surfaces in flat colors - a red floor, purple ceiling, orange walls, and colored bands on the walls - plus small source and receiver markers.">
+                    <figcaption>CATT-Acoustic model</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/ME127_SimT20.png" alt="CATT plot of simulated T20 by octave band from 125 Hz to 16 kHz, staying between about 0.7 and 0.9 seconds up to 2 kHz before falling at higher frequencies.">
+                    <figcaption>Simulated T20 by octave band</figcaption>
+                  </figure>
+                </div>
+
+                <p>Because it's a multipurpose room, we designed it to be adjustable rather than locked to one reverberation time, and simulated three versions:</p>
+
+                <table class="data-table">
+                  <caption>T20 - measured vs. simulated room versions (seconds)</caption>
+                  <thead><tr><th>Band (Hz)</th><th class="num">Measured</th><th class="num">V1 original</th><th class="num">V2 drier</th><th class="num">V3 livelier</th></tr></thead>
+                  <tbody>
+                    <tr><td>125</td><td class="num">0.83</td><td class="num">0.99</td><td class="num">0.61</td><td class="num">1.35</td></tr>
+                    <tr><td>250</td><td class="num">0.77</td><td class="num">0.88</td><td class="num">0.57</td><td class="num">1.31</td></tr>
+                    <tr><td>500</td><td class="num">0.70</td><td class="num">0.80</td><td class="num">0.52</td><td class="num">1.30</td></tr>
+                    <tr><td>1000</td><td class="num">0.77</td><td class="num">0.79</td><td class="num">0.51</td><td class="num">1.35</td></tr>
+                    <tr><td>2000</td><td class="num">0.70</td><td class="num">0.75</td><td class="num">0.51</td><td class="num">1.40</td></tr>
+                    <tr><td>4000</td><td class="num">0.60</td><td class="num">0.66</td><td class="num">0.45</td><td class="num">1.21</td></tr>
+                  </tbody>
+                </table>
+
+                <ul class="version-list">
+                  <li><strong>V1 - Original room:</strong> the baseline, with moderate reverberation around 0.7-0.8&nbsp;s that suits its multipurpose use.</li>
+                  <li><strong>V2 - Acoustic curtains, carpet removed:</strong> absorptive curtains replace the reflective glass, cutting T20 to about 0.45-0.61&nbsp;s. Jazz and cello notes become more distinct and speech gets cleaner - good for practice and teaching.</li>
+                  <li><strong>V3 - Wall panels retracted, reflective ceiling panels facing down:</strong> flippable ceiling panels (reflective wood on one side, absorptive on the other) and wall panels that retract into the drywall raise T20 to about 1.2-1.4&nbsp;s, adding warmth for solo strings and small classical ensembles.</li>
+                </ul>
+
+                <div class="photo-grid">
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_V1_Slide.jpg" alt="Slide with a photo of the room labeled V1: Original, RT at 500 Hz of 0.7 seconds.">
+                    <figcaption>V1 - original, 0.7 s at 500 Hz</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_V2_Slide.jpg" alt="Slide with a photo of the room labeled V2: For Speech - all glass turned to acoustic curtains, all ceiling turned to acoustic panels, half the flooring turned to carpet - RT at 500 Hz of 0.450 seconds.">
+                    <figcaption>V2 - for speech, 0.45 s at 500 Hz</figcaption>
+                  </figure>
+                  <figure>
+                    <img loading="lazy" src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_V3_Slide.jpg" alt="Slide with a photo of the room: wall panels replaced with drywall and the suspended ceiling replaced with bowed ceiling reflector panels, RT at 500 Hz of 1.7 seconds.">
+                    <figcaption>V3 - reflective, 1.7 s at 500 Hz</figcaption>
+                  </figure>
+                </div>
+
+                <p>Using CATT's TUCT (Algorithm 2), we convolved anechoic recordings of a cello, a jazz band, and speech with each version's simulated impulse response. Listen to how each version changes the sound:</p>
+
+                <div class="audio-grid">
+                  <div class="audio-head"></div>
+                  <div class="audio-head">Cello</div>
+                  <div class="audio-head">Jazz band</div>
+                  <div class="audio-head">Speech</div>
+
+                  <div class="audio-label">Anechoic</div>
+                  <div class="audio-cell" data-k="Cello"><audio controls preload="none" aria-label="Cello, anechoic recording"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Cello_Anechoic.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Jazz band"><audio controls preload="none" aria-label="Jazz band, anechoic recording"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Jazz_Anechoic.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Speech"><audio controls preload="none" aria-label="Speech, anechoic recording"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Speech_Anechoic.m4a" type="audio/mp4"></audio></div>
+
+                  <div class="audio-label">V1 original</div>
+                  <div class="audio-cell" data-k="Cello"><audio controls preload="none" aria-label="Cello in version 1, the original room"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Cello_V1.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Jazz band"><audio controls preload="none" aria-label="Jazz band in version 1, the original room"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Jazz_V1.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Speech"><audio controls preload="none" aria-label="Speech in version 1, the original room"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Speech_V1.m4a" type="audio/mp4"></audio></div>
+
+                  <div class="audio-label">V2 drier</div>
+                  <div class="audio-cell" data-k="Cello"><audio controls preload="none" aria-label="Cello in version 2, with curtains and no carpet"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Cello_V2.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Jazz band"><audio controls preload="none" aria-label="Jazz band in version 2, with curtains and no carpet"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Jazz_V2.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Speech"><audio controls preload="none" aria-label="Speech in version 2, with curtains and no carpet"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Speech_V2.m4a" type="audio/mp4"></audio></div>
+
+                  <div class="audio-label">V3 livelier</div>
+                  <div class="audio-cell" data-k="Cello"><audio controls preload="none" aria-label="Cello in version 3, with panels retracted and reflective ceiling"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Cello_V3.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Jazz band"><audio controls preload="none" aria-label="Jazz band in version 3, with panels retracted and reflective ceiling"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Jazz_V3.m4a" type="audio/mp4"></audio></div>
+                  <div class="audio-cell" data-k="Speech"><audio controls preload="none" aria-label="Speech in version 3, with panels retracted and reflective ceiling"><source src="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_Speech_V3.m4a" type="audio/mp4"></audio></div>
+                </div>
+
+                <p class="report-links">Simulated impulse responses (CATT, .mat): <a href="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_V1_ImpulseResponse_A0_01.mat" download>V1</a> · <a href="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_V2_ImpulseResponse_A0_01.mat" download>V2</a> · <a href="assets/Acoustics/ME127_SophiaGordon/Auralization/ME127_V3_ImpulseResponse_A0_01.mat" download>V3</a></p>
+
+                <p><strong>Lessons.</strong> Reverberation time doesn't fully describe how a room sounds - flutter and location-dependent reflections only showed up in listening. Small changes in absorption coefficients or measurement setup noticeably shift the results. Balloon pops vary from pop to pop, so a calibrated loudspeaker with a swept sine would be more consistent. More receiver positions, and absorption data from the room's designer, would sharpen both the measurements and the model.</p>
+
+                <div class="tag-row">
+                  <span class="tag">Room acoustics</span>
+                  <span class="tag">Impulse response</span>
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">Sabine equation</span>
+                  <span class="tag">CATT-Acoustic</span>
+                  <span class="tag">Auralization</span>
                 </div>
               </div>
             </div>
